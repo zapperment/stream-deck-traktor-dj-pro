@@ -1,0 +1,58 @@
+{
+  "Name": "Traktor DJ Pro",
+  "Version": "0.1.0.0",
+  "Author": "Patrick Hund",
+  "Actions": [
+    {
+      "Name": "Play Deck A",
+      "UUID": "rocks.zapperment.traktor-dj-pro.play-a",
+      "Icon": "imgs/actions/play/play-icon",
+      "Tooltip": "Starts/stops playing deck A",
+      "Controllers": ["Keypad"],
+      "States": [
+        {
+          "Image": "imgs/actions/play/play-stopped-cold",
+          "TitleAlignment": "middle"
+        }
+      ]
+    },
+    {
+      "Name": "Play Deck B",
+      "UUID": "rocks.zapperment.traktor-dj-pro.play-b",
+      "Icon": "imgs/actions/play/play-icon",
+      "Tooltip": "Starts/stops playing deck B",
+      "Controllers": ["Keypad"],
+      "States": [
+
+        {
+          "Image": "imgs/actions/play/play-stopped-cold",
+          "TitleAlignment": "middle"
+        }
+      ]
+    }
+  ],
+  "Category": "Traktor DJ Pro",
+  "CategoryIcon": "imgs/plugin/category-icon",
+  "CodePath": "bin/plugin.js",
+  "Description": "Control Traktor DJ Pro with your Stream Deck",
+  "Icon": "imgs/plugin/marketplace",
+  "SDKVersion": 2,
+  "Software": {
+    "MinimumVersion": "6.4"
+  },
+  "OS": [
+    {
+      "Platform": "mac",
+      "MinimumVersion": "12"
+    },
+    {
+      "Platform": "windows",
+      "MinimumVersion": "10"
+    }
+  ],
+  "Nodejs": {
+    "Version": "20",
+    "Debug": "enabled"
+  },
+  "UUID": "rocks.zapperment.traktor-dj-pro"
+}
