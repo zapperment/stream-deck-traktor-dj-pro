@@ -9,11 +9,9 @@ import { initPort, isControlChange, getMidiChannel } from "./midi";
 // We can enable "trace" logging so that all messages between the Stream Deck, and the plugin are recorded. When storing sensitive information
 streamDeck.logger.setLevel(LogLevel.TRACE);
 
-/*
-const input = initPort<Input>("IAC Traktor to Stream Deck", "input");
-*/
 
-const input = initPort<Input>("Keyboard Maestro", "input");
+//const input = initPort<Input>("Keyboard Maestro", "input");
+const input = initPort<Input>("IAC Traktor to Stream Deck", "input");
 const output = initPort<Output>("IAC Stream Deck to Traktor", "output");
 
 function handleKeyDown(key: "playA" | "playB") {
