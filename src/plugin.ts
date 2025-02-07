@@ -9,8 +9,6 @@ import { initPort, isControlChange, getMidiChannel } from "./midi";
 // We can enable "trace" logging so that all messages between the Stream Deck, and the plugin are recorded. When storing sensitive information
 streamDeck.logger.setLevel(LogLevel.TRACE);
 
-
-//const input = initPort<Input>("Keyboard Maestro", "input");
 const input = initPort<Input>("IAC Traktor to Stream Deck", "input");
 const output = initPort<Output>("IAC Stream Deck to Traktor", "output");
 
@@ -18,16 +16,16 @@ function handleKeyDown(key: "playA" | "playB") {
   streamDeck.logger.info(`plugin:handleKeyDown: ${key}`);
   switch (key) {
     case "playA":
-      output.send([0x90, 0x00, 0x00]);
+      output.send([0xb0, 0x00, 0x7f]);
       break;
     case "playB":
-      output.send([0x91, 0x00, 0x00]);
+      output.send([0xb1, 0x00, 0x7f]);
+
       break;
     default:
       streamDeck.logger.error(`plugin:handleKeyDown: unknown key: ${key}`);
   }
 }
-
 
 // Register the increment action.
 const playA = new PlayA(handleKeyDown);
@@ -35,7 +33,6 @@ streamDeck.actions.registerAction(playA);
 const playB = new PlayB(handleKeyDown);
 
 streamDeck.actions.registerAction(playB);
-
 
 // Finally, connect to the Stream Deck.
 streamDeck.connect();
@@ -64,7 +61,6 @@ const keys = {
     hasChanged: false,
     deck: "b",
   },
-
 };
 
 input.on("message", async (_, message) => {
@@ -94,7 +90,6 @@ input.on("message", async (_, message) => {
       keys.playB.hasChanged = true;
       streamDeck.logger.info(`hasChanged: ${keys.playB.hasChanged}`);
       state.decks.b.isPlaying = isPlaying;
-
     }
     streamDeck.logger.info(
       `received MIDI: play B ${value === 127 ? "on" : "off"}`,
@@ -157,7 +152,6 @@ input.on("message", async (_, message) => {
         }
     }
   }
-
 
   for (const key of Object.values(keys)) {
     if (key.hasChanged) {

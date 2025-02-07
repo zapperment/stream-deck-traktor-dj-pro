@@ -11,11 +11,9 @@ export class Play extends SingletonAction {
     this.handleKeyDown = handleKeyDown;
   }
 
-  updateKey({ isPlaying, isHot }: { isPlaying: boolean, isHot: boolean }) {
+  updateKey({ isPlaying, isHot }: { isPlaying: boolean; isHot: boolean }) {
     const image = `imgs/actions/play/play-${isPlaying ? "playing" : "stopped"}-${isHot ? "hot" : "cold"}.svg`;
-    streamDeck.logger.info(`setting key image to ${image}`);
-    return Promise.all(
-      this.actions.map((action) => action.setImage(image)),
-    );
+    streamDeck.logger.info(`setting key image to ${image}!`);
+    return Promise.all(this.actions.map((action) => action.setImage(image)));
   }
 }

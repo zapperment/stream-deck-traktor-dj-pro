@@ -37,10 +37,10 @@ const config = {
       exportConditions: ["node"],
       preferBuiltins: true,
       modulesOnly: true,
-      resolveOnly: [/@julusian\/midi/]
+      resolveOnly: [/@julusian\/midi/],
     }),
     commonjs({
-      include: /node_modules\/@julusian\/midi/
+      include: /node_modules\/@julusian\/midi/,
     }),
     !isWatching && terser(),
     {
