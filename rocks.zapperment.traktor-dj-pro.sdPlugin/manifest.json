@@ -6,7 +6,7 @@
     {
       "Name": "Play Deck A",
       "UUID": "rocks.zapperment.traktor-dj-pro.play-a",
-      "Icon": "imgs/actions/play/play-icon",
+      "Icon": "imgs/actions/play/play-stopped-cold",
       "Tooltip": "Starts/stops playing deck A",
       "Controllers": ["Keypad"],
       "States": [
@@ -19,11 +19,10 @@
     {
       "Name": "Play Deck B",
       "UUID": "rocks.zapperment.traktor-dj-pro.play-b",
-      "Icon": "imgs/actions/play/play-icon",
+      "Icon": "imgs/actions/play/play-stopped-cold",
       "Tooltip": "Starts/stops playing deck B",
       "Controllers": ["Keypad"],
       "States": [
-
         {
           "Image": "imgs/actions/play/play-stopped-cold",
           "TitleAlignment": "middle"
