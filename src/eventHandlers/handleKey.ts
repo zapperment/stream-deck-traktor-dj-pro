@@ -44,6 +44,42 @@ export function createKeyHandler(keyDirection: KeyDirection, output: Output) {
           ),
         );
         break;
+      case "jumpForwardA":
+        output.send(
+          createControlChangeMessage(
+            midiChannel.sendDeckA,
+            midiControl.jumpForward,
+            value,
+          ),
+        );
+        break;
+      case "jumpForwardB":
+        output.send(
+          createControlChangeMessage(
+            midiChannel.sendDeckB,
+            midiControl.jumpForward,
+            value,
+          ),
+        );
+        break;
+      case "jumpBackA":
+        output.send(
+          createControlChangeMessage(
+            midiChannel.sendDeckA,
+            midiControl.jumpBack,
+            value,
+          ),
+        );
+        break;
+      case "jumpBackB":
+        output.send(
+          createControlChangeMessage(
+            midiChannel.sendDeckB,
+            midiControl.jumpBack,
+            value,
+          ),
+        );
+        break;
       default:
         streamDeck.logger.error(`[handleKey] unknown key: ${key}`);
     }

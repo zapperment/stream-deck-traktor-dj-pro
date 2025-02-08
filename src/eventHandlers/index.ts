@@ -1,2 +1,2 @@
 export * from "./handleKey";
-export * from "./handleMidiMessage";
+export * from "./MidiMessageHandler";

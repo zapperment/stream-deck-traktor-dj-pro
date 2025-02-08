@@ -54,9 +54,62 @@
           "TitleAlignment": "middle"
         }
       ]
+    },
+    {
+      "Name": "Jump Forward Deck A",
+      "UUID": "rocks.zapperment.traktor-dj-pro.jump-forward-a",
+      "Icon": "imgs/actions/jump-forward/jump-forward-normal-cold",
+      "Tooltip": "Jumps forward on deck A",
+      "Controllers": ["Keypad"],
+      "States": [
+        {
+          "Image": "imgs/actions/jump-forward/jump-forward-normal-cold",
+          "TitleAlignment": "middle"
+        }
+      ]
+    },
+    {
+      "Name": "Jump Forward Deck B",
+      "UUID": "rocks.zapperment.traktor-dj-pro.jump-forward-b",
+      "Icon": "imgs/actions/jump-forward/jump-forward-normal-cold",
+      "Tooltip": "Jumps forward on deck B",
+      "Controllers": ["Keypad"],
+      "States": [
+        {
+          "Image": "imgs/actions/jump-forward/jump-forward-normal-cold",
+          "TitleAlignment": "middle"
+        }
+      ]
+    },
+    {
+      "Name": "Jump Back Deck A",
+      "UUID": "rocks.zapperment.traktor-dj-pro.jump-back-a",
+      "Icon": "imgs/actions/jump-back/jump-back-normal-cold",
+      "Tooltip": "Jumps back on deck A",
+      "Controllers": ["Keypad"],
+      "States": [
+        {
+          "Image": "imgs/actions/jump-back/jump-back-normal-cold",
+          "TitleAlignment": "middle"
+        }
+      ]
+    },
+    {
+      "Name": "Jump Back Deck B",
+      "UUID": "rocks.zapperment.traktor-dj-pro.jump-back-b",
+      "Icon": "imgs/actions/jump-back/jump-back-normal-cold",
+      "Tooltip": "Jumps back on deck B",
+      "Controllers": ["Keypad"],
+      "States": [
+        {
+          "Image": "imgs/actions/jump-back/jump-back-normal-cold",
+          "TitleAlignment": "middle"
+        }
+      ]
     }
   ],
   "Category": "Traktor DJ Pro",
+
   "CategoryIcon": "imgs/plugin/category-icon",
   "CodePath": "bin/plugin.js",
   "Description": "Control Traktor DJ Pro with your Stream Deck",

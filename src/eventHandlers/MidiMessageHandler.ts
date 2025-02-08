@@ -1,11 +1,12 @@
-import type { MidiMessage } from "@julusian/midi";
+import { MidiMessage } from "@julusian/midi";
+import { midiControl } from "../config";
 import { isControlChange } from "../midi/isControlChange";
 import { getMidiChannel } from "../midi/getMidiChannel";
 import streamDeck from "@elgato/streamdeck";
-import { midiChannel, midiControl } from "../config";
+import { midiChannel } from "../config";
 
-export function createMidiMessageHandler(keys: Keys) {
-  const state = {
+export class MidiMessageHandler {
+  private state = {
     decks: {
       a: {
         isPlaying: false,
@@ -20,7 +21,13 @@ export function createMidiMessageHandler(keys: Keys) {
     },
   };
 
-  return async (timestamp: number, message: MidiMessage) => {
+  private keys: Keys;
+
+  constructor(keys: Keys) {
+    this.keys = keys;
+  }
+
+  handleMidiMessage(message: MidiMessage) {
     if (!isControlChange(message)) {
       return;
     }
@@ -34,12 +41,12 @@ export function createMidiMessageHandler(keys: Keys) {
     if (channel === midiChannel.receiveDeckA && control === midiControl.play) {
       const isPlaying = value === 127;
 
-      if (state.decks.a.isPlaying !== isPlaying) {
-        keys.playA.hasChanged = true;
+      if (this.state.decks.a.isPlaying !== isPlaying) {
+        this.keys.playA.hasChanged = true;
         streamDeck.logger.info(
-          `[handleMidiMessage] hasChanged: ${keys.playA.hasChanged}`,
+          `[handleMidiMessage] hasChanged: ${this.keys.playA.hasChanged}`,
         );
-        state.decks.a.isPlaying = isPlaying;
+        this.state.decks.a.isPlaying = isPlaying;
       }
       streamDeck.logger.info(
         `[handleMidiMessage] received MIDI: play A ${isPlaying ? "on" : "off"}`,
@@ -50,12 +57,12 @@ export function createMidiMessageHandler(keys: Keys) {
     if (channel === midiChannel.receiveDeckB && control === midiControl.play) {
       const isPlaying = value === 127;
 
-      if (state.decks.b.isPlaying !== isPlaying) {
-        keys.playB.hasChanged = true;
+      if (this.state.decks.b.isPlaying !== isPlaying) {
+        this.keys.playB.hasChanged = true;
         streamDeck.logger.info(
-          `[handleMidiMessage] hasChanged: ${keys.playB.hasChanged}`,
+          `[handleMidiMessage] hasChanged: ${this.keys.playB.hasChanged}`,
         );
-        state.decks.b.isPlaying = isPlaying;
+        this.state.decks.b.isPlaying = isPlaying;
       }
       streamDeck.logger.info(
         `[handleMidiMessage] received MIDI: play B ${isPlaying ? "on" : "off"}`,
@@ -65,12 +72,12 @@ export function createMidiMessageHandler(keys: Keys) {
     // Handle deck A cue
     if (channel === midiChannel.receiveDeckA && control === midiControl.cue) {
       const isQueing = value === 127;
-      if (state.decks.a.isCueing !== isQueing) {
-        keys.cueA.hasChanged = true;
+      if (this.state.decks.a.isCueing !== isQueing) {
+        this.keys.cueA.hasChanged = true;
         streamDeck.logger.info(
-          `[handleMidiMessage] hasChanged: ${keys.cueA.hasChanged}`,
+          `[handleMidiMessage] hasChanged: ${this.keys.cueA.hasChanged}`,
         );
-        state.decks.a.isCueing = isQueing;
+        this.state.decks.a.isCueing = isQueing;
       }
       streamDeck.logger.info(
         `[handleMidiMessage] received MIDI: cue A ${isQueing ? "pressed" : "released"}`,
@@ -80,12 +87,12 @@ export function createMidiMessageHandler(keys: Keys) {
     // Handle deck B cue
     if (channel === midiChannel.receiveDeckB && control === midiControl.cue) {
       const isQueing = value === 127;
-      if (state.decks.b.isCueing !== isQueing) {
-        keys.cueB.hasChanged = true;
+      if (this.state.decks.b.isCueing !== isQueing) {
+        this.keys.cueB.hasChanged = true;
         streamDeck.logger.info(
-          `[handleMidiMessage] hasChanged: ${keys.cueB.hasChanged}`,
+          `[handleMidiMessage] hasChanged: ${this.keys.cueB.hasChanged}`,
         );
-        state.decks.b.isCueing = isQueing;
+        this.state.decks.b.isCueing = isQueing;
       }
       streamDeck.logger.info(
         `[handleMidiMessage] received MIDI: cue B ${isQueing ? "pressed" : "released"}`,
@@ -104,22 +111,22 @@ export function createMidiMessageHandler(keys: Keys) {
         // fader all the way to the right,
         // deck A is cold, deck B is hot
         case value === 127:
-          if (state.decks.a.isHot) {
-            state.decks.a.isHot = false;
-            keys.playA.hasChanged = true;
-            keys.cueA.hasChanged = true;
-            keys.jumpForwardA.hasChanged = true;
-            keys.jumpBackA.hasChanged = true;
+          if (this.state.decks.a.isHot) {
+            this.state.decks.a.isHot = false;
+            this.keys.playA.hasChanged = true;
+            this.keys.cueA.hasChanged = true;
+            this.keys.jumpForwardA.hasChanged = true;
+            this.keys.jumpBackA.hasChanged = true;
             streamDeck.logger.info(
               `[handleMidiMessage] fader all the way to the right: deck A is now cold`,
             );
           }
-          if (!state.decks.b.isHot) {
-            state.decks.b.isHot = true;
-            keys.playB.hasChanged = true;
-            keys.cueB.hasChanged = true;
-            keys.jumpForwardB.hasChanged = true;
-            keys.jumpBackB.hasChanged = true;
+          if (!this.state.decks.b.isHot) {
+            this.state.decks.b.isHot = true;
+            this.keys.playB.hasChanged = true;
+            this.keys.cueB.hasChanged = true;
+            this.keys.jumpForwardB.hasChanged = true;
+            this.keys.jumpBackB.hasChanged = true;
             streamDeck.logger.info(
               `[handleMidiMessage] fader all the way to the right: deck B is now hot`,
             );
@@ -129,22 +136,22 @@ export function createMidiMessageHandler(keys: Keys) {
         // fader all the way to the left,
         // deck A is hot, deck B is cold
         case value === 0:
-          if (!state.decks.a.isHot) {
-            state.decks.a.isHot = true;
-            keys.playA.hasChanged = true;
-            keys.cueA.hasChanged = true;
-            keys.jumpForwardA.hasChanged = true;
-            keys.jumpBackA.hasChanged = true;
+          if (!this.state.decks.a.isHot) {
+            this.state.decks.a.isHot = true;
+            this.keys.playA.hasChanged = true;
+            this.keys.cueA.hasChanged = true;
+            this.keys.jumpForwardA.hasChanged = true;
+            this.keys.jumpBackA.hasChanged = true;
             streamDeck.logger.info(
               `[handleMidiMessage] fader all the way to the left: deck A is now hot`,
             );
           }
-          if (state.decks.b.isHot) {
-            state.decks.b.isHot = false;
-            keys.playB.hasChanged = true;
-            keys.cueB.hasChanged = true;
-            keys.jumpForwardB.hasChanged = true;
-            keys.jumpBackB.hasChanged = true;
+          if (this.state.decks.b.isHot) {
+            this.state.decks.b.isHot = false;
+            this.keys.playB.hasChanged = true;
+            this.keys.cueB.hasChanged = true;
+            this.keys.jumpForwardB.hasChanged = true;
+            this.keys.jumpBackB.hasChanged = true;
             streamDeck.logger.info(
               `[handleMidiMessage] fader all the way to the left: deck B is now cold`,
             );
@@ -154,22 +161,22 @@ export function createMidiMessageHandler(keys: Keys) {
         // fader is in the middle,
         // both decks are hot
         default:
-          if (!state.decks.a.isHot) {
-            state.decks.a.isHot = true;
-            keys.playA.hasChanged = true;
-            keys.cueA.hasChanged = true;
-            keys.jumpForwardA.hasChanged = true;
-            keys.jumpBackA.hasChanged = true;
+          if (!this.state.decks.a.isHot) {
+            this.state.decks.a.isHot = true;
+            this.keys.playA.hasChanged = true;
+            this.keys.cueA.hasChanged = true;
+            this.keys.jumpForwardA.hasChanged = true;
+            this.keys.jumpBackA.hasChanged = true;
             streamDeck.logger.info(
               `[handleMidiMessage] fader is in the middle: deck A is now hot`,
             );
           }
-          if (!state.decks.b.isHot) {
-            state.decks.b.isHot = true;
-            keys.playB.hasChanged = true;
-            keys.cueB.hasChanged = true;
-            keys.jumpForwardB.hasChanged = true;
-            keys.jumpBackB.hasChanged = true;
+          if (!this.state.decks.b.isHot) {
+            this.state.decks.b.isHot = true;
+            this.keys.playB.hasChanged = true;
+            this.keys.cueB.hasChanged = true;
+            this.keys.jumpForwardB.hasChanged = true;
+            this.keys.jumpBackB.hasChanged = true;
             streamDeck.logger.info(
               `[handleMidiMessage] fader is in the middle: deck B is now hot`,
             );
@@ -178,14 +185,18 @@ export function createMidiMessageHandler(keys: Keys) {
     }
 
     // Update key is there is a change
-    for (const key of Object.values(keys)) {
+    for (const key of Object.values(this.keys)) {
       if (key.hasChanged) {
         streamDeck.logger.info(
-          `[handleMidiMessage] updating key ${JSON.stringify(state.decks[key.deck as Deck])}`,
+          `[handleMidiMessage] updating key ${JSON.stringify(this.state.decks[key.deck as Deck])}`,
         );
-        await key.action.updateKey(state.decks[key.deck as Deck]);
+        key.action.updateKey(this.state.decks[key.deck as Deck]);
         key.hasChanged = false;
       }
     }
-  };
+  }
+
+  isHot(deck: Deck) {
+    return this.state.decks[deck].isHot;
+  }
 }
