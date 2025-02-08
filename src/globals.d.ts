@@ -11,18 +11,60 @@ type Key =
   | "jumpBackB"
   | "loadA"
   | "loadB"
+  | "loopControl8A"
+  | "loopControl16A"
+  | "loopControl32A"
+  | "loopControl8B"
+  | "loopControl16B"
+  | "loopControl32B"
+  | "loopA"
+  | "loopB"
   | "tempoFasterA"
   | "tempoFasterB"
   | "tempoSlowerA"
   | "tempoSlowerB";
+
+type Controller =
+  | "isPlaying"
+  | "isCueing"
+  | "isLooping"
+  | "loopSetTo8"
+  | "loopSetTo16"
+  | "loopSetTo32";
 
 type Keys = Record<
   Key,
   {
     action: SingletonAction;
     hasChanged: boolean;
+    controller?: Controller;
     deck: Deck;
   }
 >;
 
 type KeyDirection = "down" | "up";
+
+interface Img {
+  onCold: string;
+  onHot: string;
+  offCold: string;
+  offHot: string;
+}
+
+interface State {
+  decks: {
+    a: DeckState;
+    b: DeckState;
+  };
+}
+
+interface DeckState {
+  isPlaying: boolean;
+  isCueing: boolean;
+  isLooping: boolean;
+  loopSetTo8: boolean;
+  loopSetTo16: boolean;
+  loopSetTo32: boolean;
+  isHot: boolean;
+  currentLoopSize: number | null;
+}

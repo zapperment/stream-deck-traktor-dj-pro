@@ -17,8 +17,8 @@ export class JumpBack extends DeckStateAwareAction {
     this.handleKeyUp = handleKeyUp;
   }
 
-  updateKey({ isPressed }: { isPressed: boolean }) {
-    const image = `imgs/actions/jump-back/jump-back-${isPressed ? "pressed" : "normal"}-${this.isHot ? "hot" : "cold"}.svg`;
+  updateKey({ isOn }: { isOn: boolean } = { isOn: false }) {
+    const image = `imgs/actions/jump-back/jump-back-${isOn ? "pressed" : "normal"}-${this.isHot ? "hot" : "cold"}.svg`;
     streamDeck.logger.info(`[JumpBack] setting key image to ${image}!`);
     return Promise.all(this.actions.map((action) => action.setImage(image)));
   }

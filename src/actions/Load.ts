@@ -17,8 +17,8 @@ export class Load extends DeckStateAwareAction {
     this.handleKeyUp = handleKeyUp;
   }
 
-  updateKey({ isPressed }: { isPressed: boolean }) {
-    const image = `imgs/actions/load/load-${isPressed ? "pressed" : "normal"}-${this.isHot ? "hot" : "cold"}.svg`;
+  updateKey({ isOn }: { isOn: boolean } = { isOn: false }) {
+    const image = `imgs/actions/load/load-${isOn ? "pressed" : "normal"}-${this.isHot ? "hot" : "cold"}.svg`;
     streamDeck.logger.info(`[Load] setting key image to ${image}!`);
     return Promise.all(this.actions.map((action) => action.setImage(image)));
   }

@@ -8,14 +8,14 @@ import { Load } from "./Load";
 export class LoadB extends Load {
   override async onKeyDown(): Promise<void> {
     this.updateKey({
-      isPressed: true,
+      isOn: true,
     });
     this.handleKeyDown("loadB");
   }
 
   override async onKeyUp(): Promise<void> {
     this.updateKey({
-      isPressed: false,
+      isOn: false,
     });
     this.handleKeyUp("loadB");
   }

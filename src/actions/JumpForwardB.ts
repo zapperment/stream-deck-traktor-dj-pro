@@ -8,13 +8,13 @@ import { JumpForward } from "./JumpForward";
 export class JumpForwardB extends JumpForward {
   override async onKeyDown(): Promise<void> {
     this.updateKey({
-      isPressed: true,
+      isOn: true,
     });
     this.handleKeyDown("jumpForwardB");
   }
   override async onKeyUp(): Promise<void> {
     this.updateKey({
-      isPressed: false,
+      isOn: false,
     });
     this.handleKeyUp("jumpForwardB");
   }

@@ -1,15 +1,25 @@
 import { action } from "@elgato/streamdeck";
-import { Cue } from "./Cue";
+import { TraktorControlledAction } from "./TraktorControlledAction";
 
 /**
  * Cue deck A
  */
 @action({ UUID: "rocks.zapperment.traktor-dj-pro.cue-a" })
-export class CueA extends Cue {
-  override async onKeyDown(): Promise<void> {
-    this.handleKeyDown("cueA");
-  }
-  override async onKeyUp(): Promise<void> {
-    this.handleKeyUp("cueA");
+export class CueA extends TraktorControlledAction {
+  constructor(
+    handleKeyDown: (key: Key) => void,
+    handleKeyUp: (key: Key) => void,
+  ) {
+    super({
+      key: "cueA",
+      img: {
+        onCold: "imgs/actions/cue/cue-pressed-cold.svg",
+        onHot: "imgs/actions/cue/cue-pressed-hot.svg",
+        offCold: "imgs/actions/cue/cue-normal-cold.svg",
+        offHot: "imgs/actions/cue/cue-normal-hot.svg",
+      },
+      handleKeyDown,
+      handleKeyUp,
+    });
   }
 }

@@ -9,12 +9,18 @@ export const midiChannel = {
 export const midiControl = {
   play: 0,
   cue: 1,
-  crossfader: 0,
+  cup: 2,
+  loopControl8: 3,
+  loopControl16: 4,
+  loopControl32: 5,
+  loop: 6,
   tempoFaster: 7,
   tempoSlower: 8,
   load: 9,
   jumpForward: 10,
   jumpBack: 11,
+  setLoop: 16,
+  crossfader: 0,
 };
 
 export const keyDirection = {
@@ -26,3 +32,17 @@ export const deck = {
   a: "a" as Deck,
   b: "b" as Deck,
 };
+
+export const midiControlValueToLoopControl = [
+  "loopSetTo32", // 0
+  "loopSetTo16", // 1
+  "loopSetTo8", // 2
+  "loopSetTo4", // 3
+  "loopSetTo2", // 4
+  "loopSetTo1", // 5
+  "loopSetTo2", // 6
+  "loopSetTo4", // 7
+  "loopSetTo8", // 8
+  "loopSetTo16", // 9
+  "loopSetTo32", // 10
+];

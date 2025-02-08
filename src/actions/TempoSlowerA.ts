@@ -8,14 +8,14 @@ import { TempoSlower } from "./TempoSlower";
 export class TempoSlowerA extends TempoSlower {
   override async onKeyDown(): Promise<void> {
     this.updateKey({
-      isPressed: true,
+      isOn: true,
     });
     this.handleKeyDown("tempoSlowerA");
   }
 
   override async onKeyUp(): Promise<void> {
     this.updateKey({
-      isPressed: false,
+      isOn: false,
     });
     this.handleKeyUp("tempoSlowerA");
   }

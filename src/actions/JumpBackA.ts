@@ -8,14 +8,14 @@ import { JumpBack } from "./JumpBack";
 export class JumpBackA extends JumpBack {
   override async onKeyDown(): Promise<void> {
     this.updateKey({
-      isPressed: true,
+      isOn: true,
     });
     this.handleKeyDown("jumpBackA");
   }
 
   override async onKeyUp(): Promise<void> {
     this.updateKey({
-      isPressed: false,
+      isOn: false,
     });
     this.handleKeyUp("jumpBackA");
   }

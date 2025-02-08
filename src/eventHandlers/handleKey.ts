@@ -20,6 +20,7 @@ export function createKeyHandler(
           ),
         );
         break;
+
       case "cueB":
         output.send(
           createControlChangeMessage(
@@ -29,6 +30,7 @@ export function createKeyHandler(
           ),
         );
         break;
+
       case "jumpBackA":
         output.send(
           createControlChangeMessage(
@@ -38,6 +40,7 @@ export function createKeyHandler(
           ),
         );
         break;
+
       case "jumpBackB":
         output.send(
           createControlChangeMessage(
@@ -47,6 +50,7 @@ export function createKeyHandler(
           ),
         );
         break;
+
       case "jumpForwardA":
         output.send(
           createControlChangeMessage(
@@ -56,6 +60,7 @@ export function createKeyHandler(
           ),
         );
         break;
+
       case "jumpForwardB":
         output.send(
           createControlChangeMessage(
@@ -65,6 +70,7 @@ export function createKeyHandler(
           ),
         );
         break;
+
       case "loadA":
         output.send(
           createControlChangeMessage(
@@ -74,6 +80,7 @@ export function createKeyHandler(
           ),
         );
         break;
+
       case "loadB":
         output.send(
           createControlChangeMessage(
@@ -83,6 +90,87 @@ export function createKeyHandler(
           ),
         );
         break;
+
+      case "loopA":
+        output.send(
+          createControlChangeMessage(
+            midiChannel.sendDeckA,
+            midiControl.loop,
+            value,
+          ),
+        );
+        break;
+
+      case "loopB":
+        output.send(
+          createControlChangeMessage(
+            midiChannel.sendDeckB,
+            midiControl.loop,
+            value,
+          ),
+        );
+        break;
+
+      case "loopControl8A":
+        output.send(
+          createControlChangeMessage(
+            midiChannel.sendDeckA,
+            midiControl.loopControl8,
+            value,
+          ),
+        );
+        break;
+
+      case "loopControl8B":
+        output.send(
+          createControlChangeMessage(
+            midiChannel.sendDeckB,
+            midiControl.loopControl8,
+            value,
+          ),
+        );
+        break;
+
+      case "loopControl16A":
+        output.send(
+          createControlChangeMessage(
+            midiChannel.sendDeckA,
+            midiControl.loopControl16,
+            value,
+          ),
+        );
+        break;
+
+      case "loopControl16B":
+        output.send(
+          createControlChangeMessage(
+            midiChannel.sendDeckB,
+            midiControl.loopControl16,
+            value,
+          ),
+        );
+        break;
+
+      case "loopControl32A":
+        output.send(
+          createControlChangeMessage(
+            midiChannel.sendDeckA,
+            midiControl.loopControl32,
+            value,
+          ),
+        );
+        break;
+
+      case "loopControl32B":
+        output.send(
+          createControlChangeMessage(
+            midiChannel.sendDeckB,
+            midiControl.loopControl32,
+            value,
+          ),
+        );
+        break;
+
       case "playA":
         output.send(
           createControlChangeMessage(
@@ -92,6 +180,7 @@ export function createKeyHandler(
           ),
         );
         break;
+
       case "playB":
         output.send(
           createControlChangeMessage(

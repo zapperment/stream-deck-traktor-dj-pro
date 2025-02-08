@@ -184,9 +184,120 @@
           "TitleAlignment": "middle"
         }
       ]
+    },
+    {
+      "Name": "Loop Deck A",
+      "UUID": "rocks.zapperment.traktor-dj-pro.loop-a",
+      "Icon": "imgs/actions/loop/loop-inactive-cold",
+      "Tooltip": "Turns loop on/off on deck A",
+      "Controllers": ["Keypad"],
+
+      "States": [
+        {
+          "Image": "imgs/actions/loop/loop-inactive-cold",
+          "TitleAlignment": "middle"
+        }
+      ]
+    },
+    {
+      "Name": "Loop Deck B",
+      "UUID": "rocks.zapperment.traktor-dj-pro.loop-b",
+      "Icon": "imgs/actions/loop/loop-inactive-cold",
+      "Tooltip": "Turns loop on/off on deck B",
+      "Controllers": ["Keypad"],
+
+      "States": [
+        {
+          "Image": "imgs/actions/loop/loop-inactive-cold",
+          "TitleAlignment": "middle"
+        }
+      ]
+    },
+    {
+      "Name": "Loop Control 8 Deck A",
+      "UUID": "rocks.zapperment.traktor-dj-pro.loop-control-8-a",
+      "Icon": "imgs/actions/loop-control-8/loop-control-8-inactive-cold",
+      "Tooltip": "Sets loop length to 8 beats on deck A",
+      "Controllers": ["Keypad"],
+
+      "States": [
+        {
+          "Image": "imgs/actions/loop-control-8/loop-control-8-inactive-cold",
+          "TitleAlignment": "middle"
+        }
+      ]
+    },
+    {
+      "Name": "Loop Control 8 Deck B",
+      "UUID": "rocks.zapperment.traktor-dj-pro.loop-control-8-b",
+      "Icon": "imgs/actions/loop-control-8/loop-control-8-inactive-cold",
+      "Tooltip": "Sets loop length to 8 beats on deck B",
+      "Controllers": ["Keypad"],
+
+      "States": [
+        {
+          "Image": "imgs/actions/loop-control-8/loop-control-8-inactive-cold",
+          "TitleAlignment": "middle"
+        }
+      ]
+    },
+    {
+      "Name": "Loop Control 16 Deck A",
+      "UUID": "rocks.zapperment.traktor-dj-pro.loop-control-16-a",
+      "Icon": "imgs/actions/loop-control-16/loop-control-16-inactive-cold",
+      "Tooltip": "Sets loop length to 16 beats on deck A",
+      "Controllers": ["Keypad"],
+
+      "States": [
+        {
+          "Image": "imgs/actions/loop-control-16/loop-control-16-inactive-cold",
+          "TitleAlignment": "middle"
+        }
+      ]
+    },
+    {
+      "Name": "Loop Control 16 Deck B",
+      "UUID": "rocks.zapperment.traktor-dj-pro.loop-control-16-b",
+      "Icon": "imgs/actions/loop-control-16/loop-control-16-inactive-cold",
+      "Tooltip": "Sets loop length to 16 beats on deck B",
+      "Controllers": ["Keypad"],
+
+      "States": [
+        {
+          "Image": "imgs/actions/loop-control-16/loop-control-16-inactive-cold",
+          "TitleAlignment": "middle"
+        }
+      ]
+    },
+    {
+      "Name": "Loop Control 32 Deck A",
+      "UUID": "rocks.zapperment.traktor-dj-pro.loop-control-32-a",
+      "Icon": "imgs/actions/loop-control-32/loop-control-32-inactive-cold",
+      "Tooltip": "Sets loop length to 32 beats on deck A",
+      "Controllers": ["Keypad"],
+
+      "States": [
+        {
+          "Image": "imgs/actions/loop-control-32/loop-control-32-inactive-cold",
+          "TitleAlignment": "middle"
+        }
+      ]
+    },
+    {
+      "Name": "Loop Control 32 Deck B",
+      "UUID": "rocks.zapperment.traktor-dj-pro.loop-control-32-b",
+      "Icon": "imgs/actions/loop-control-32/loop-control-32-inactive-cold",
+      "Tooltip": "Sets loop length to 32 beats on deck B",
+      "Controllers": ["Keypad"],
+
+      "States": [
+        {
+          "Image": "imgs/actions/loop-control-32/loop-control-32-inactive-cold",
+          "TitleAlignment": "middle"
+        }
+      ]
     }
   ],
-
   "Category": "Traktor DJ Pro",
   "CategoryIcon": "imgs/plugin/category-icon",
   "CodePath": "bin/plugin.js",

@@ -1,22 +1,32 @@
 import { MidiMessage } from "@julusian/midi";
-import { deck, midiControl } from "../config";
+import { deck, midiControl, midiControlValueToLoopControl } from "../config";
 import { isControlChange } from "../midi/isControlChange";
 import { getMidiChannel } from "../midi/getMidiChannel";
 import streamDeck from "@elgato/streamdeck";
 import { midiChannel } from "../config";
 
 export class MidiMessageHandler {
-  private state = {
+  private state: State = {
     decks: {
       a: {
         isPlaying: false,
         isCueing: false,
+        isLooping: false,
+        loopSetTo8: false,
+        loopSetTo16: false,
+        loopSetTo32: false,
         isHot: false,
+        currentLoopSize: null,
       },
       b: {
         isPlaying: false,
         isCueing: false,
+        isLooping: false,
+        loopSetTo8: false,
+        loopSetTo16: false,
+        loopSetTo32: false,
         isHot: false,
+        currentLoopSize: null,
       },
     },
   };
@@ -37,27 +47,27 @@ export class MidiMessageHandler {
       `[handleMidiMessage] received MIDI: channel ${channel}, CC ${control}, value ${value}`,
     );
 
-    if (channel === midiChannel.receiveDeckA) {
-      switch (control) {
-        case midiControl.play:
-          this.handleDeckAPlay(value);
-          break;
-        case midiControl.cue:
-          this.handleDeckACue(value);
-          break;
-        default:
-      }
-    }
+    const currentDeck =
+      channel === midiChannel.receiveDeckA
+        ? deck.a
+        : channel === midiChannel.receiveDeckB
+          ? deck.b
+          : null;
 
-    if (channel === midiChannel.receiveDeckB) {
+    if (currentDeck) {
       switch (control) {
         case midiControl.play:
-          this.handleDeckBPlay(value);
+          this.handlePlay(value, currentDeck);
           break;
         case midiControl.cue:
-          this.handleDeckBCue(value);
+          this.handleCue(value, currentDeck);
           break;
-        default:
+        case midiControl.loop:
+          this.handleLoop(value, currentDeck);
+          break;
+        case midiControl.setLoop:
+          this.handleSetLoop(value, currentDeck);
+          break;
       }
     }
 
@@ -68,7 +78,53 @@ export class MidiMessageHandler {
       this.handleCrossfader(value);
     }
 
-    // Update key is there is a change
+    // Update keys if there are changes
+
+    [
+      "cueA",
+      "cueB",
+      "loopA",
+      "loopB",
+      "loopControl8A",
+      "loopControl8B",
+      "loopControl16A",
+      "loopControl16B",
+      "loopControl32A",
+      "loopControl32B",
+      "playA",
+      "playB",
+    ].forEach((key) => {
+      const keyState = this.keys[key as keyof Keys];
+      if (keyState.hasChanged) {
+        keyState.action.updateKey({
+          isOn: this.state.decks[keyState.deck][
+            keyState.controller as Controller
+          ],
+          isHot: this.isHot(keyState.deck),
+        });
+        keyState.hasChanged = false;
+      }
+    });
+
+    [
+      "jumpForwardA",
+      "jumpForwardB",
+      "jumpBackA",
+      "jumpBackB",
+      "loadA",
+      "loadB",
+      "tempoFasterA",
+      "tempoFasterB",
+      "tempoSlowerA",
+      "tempoSlowerB",
+    ].forEach((key) => {
+      const keyState = this.keys[key as keyof Keys];
+      if (keyState.hasChanged) {
+        keyState.action.updateKey();
+        keyState.hasChanged = false;
+      }
+    });
+
     for (const key of Object.values(this.keys)) {
       if (key.hasChanged) {
         streamDeck.logger.info(
@@ -150,62 +206,103 @@ export class MidiMessageHandler {
     }
   }
 
-  private handleDeckAPlay(value: number) {
-    const isPlaying = value === 127;
-
-    if (this.state.decks.a.isPlaying !== isPlaying) {
-      this.keys.playA.hasChanged = true;
-      streamDeck.logger.info(
-        `[handleMidiMessage] hasChanged: ${this.keys.playA.hasChanged}`,
-      );
-      this.state.decks.a.isPlaying = isPlaying;
+  private handleTraktorControl({
+    value,
+    controller,
+    deck,
+    key,
+  }: {
+    value: number;
+    controller: Controller;
+    deck: Deck;
+    key: Key;
+  }) {
+    const isOn = value === 127;
+    if (this.state.decks[deck][controller] !== isOn) {
+      this.keys[key].hasChanged = true;
+      this.state.decks[deck][controller] = isOn;
     }
     streamDeck.logger.info(
-      `[handleMidiMessage] received MIDI: play A ${isPlaying ? "on" : "off"}`,
+      `[handleMidiMessage] received MIDI: ${key} ${isOn ? "on" : "off"}`,
     );
   }
 
-  private handleDeckBPlay(value: number) {
-    const isPlaying = value === 127;
-
-    if (this.state.decks.b.isPlaying !== isPlaying) {
-      this.keys.playB.hasChanged = true;
-      streamDeck.logger.info(
-        `[handleMidiMessage] hasChanged: ${this.keys.playB.hasChanged}`,
-      );
-      this.state.decks.b.isPlaying = isPlaying;
-    }
-    streamDeck.logger.info(
-      `[handleMidiMessage] received MIDI: play B ${isPlaying ? "on" : "off"}`,
-    );
+  private handlePlay(value: number, deck: Deck) {
+    this.handleTraktorControl({
+      value,
+      controller: "isPlaying",
+      deck,
+      key: `play${deck.toUpperCase()}` as Key,
+    });
   }
 
-  private handleDeckACue(value: number) {
-    const isQueing = value === 127;
-    if (this.state.decks.a.isCueing !== isQueing) {
-      this.keys.cueA.hasChanged = true;
-      streamDeck.logger.info(
-        `[handleMidiMessage] hasChanged: ${this.keys.cueA.hasChanged}`,
-      );
-      this.state.decks.a.isCueing = isQueing;
-    }
-    streamDeck.logger.info(
-      `[handleMidiMessage] received MIDI: cue A ${isQueing ? "pressed" : "released"}`,
-    );
+  private handleCue(value: number, deck: Deck) {
+    this.handleTraktorControl({
+      value,
+      controller: "isCueing",
+      deck,
+      key: `cue${deck.toUpperCase()}` as Key,
+    });
   }
 
-  private handleDeckBCue(value: number) {
-    const isQueing = value === 127;
-    if (this.state.decks.b.isCueing !== isQueing) {
-      this.keys.cueB.hasChanged = true;
-      streamDeck.logger.info(
-        `[handleMidiMessage] hasChanged: ${this.keys.cueB.hasChanged}`,
-      );
-      this.state.decks.b.isCueing = isQueing;
+  private handleLoop(value: number, deck: Deck) {
+    this.handleTraktorControl({
+      value,
+      controller: "isLooping",
+      deck,
+      key: `loop${deck.toUpperCase()}` as Key,
+    });
+    const currentLoopSize = this.state.decks[deck].currentLoopSize;
+    if (currentLoopSize !== null) {
+      this.handleTraktorControl({
+        value,
+        controller: `loopSetTo${currentLoopSize}` as Controller,
+        deck,
+        key: `loopControl${currentLoopSize}${deck.toUpperCase()}` as Key,
+      });
     }
+  }
+
+  private handleSetLoop(value: number, deck: Deck) {
+    const loopControl = midiControlValueToLoopControl[value];
     streamDeck.logger.info(
-      `[handleMidiMessage] received MIDI: cue B ${isQueing ? "pressed" : "released"}`,
+      `[handleSetLoop] loop set deck ${deck.toUpperCase()}: ${loopControl} (${value})`,
     );
+
+    const loopSetTo8 = loopControl === "loopSetTo8";
+    const loopSetTo16 = loopControl === "loopSetTo16";
+    const loopSetTo32 = loopControl === "loopSetTo32";
+
+    this.handleTraktorControl({
+      value: loopSetTo8 ? 127 : 0,
+      controller: "loopSetTo8",
+      deck,
+      key: `loopControl8${deck.toUpperCase()}` as Key,
+    });
+
+    this.handleTraktorControl({
+      value: loopSetTo16 ? 127 : 0,
+      controller: "loopSetTo16",
+      deck,
+      key: `loopControl16${deck.toUpperCase()}` as Key,
+    });
+
+    this.handleTraktorControl({
+      value: loopSetTo32 ? 127 : 0,
+      controller: "loopSetTo32",
+      deck,
+      key: `loopControl32${deck.toUpperCase()}` as Key,
+    });
+
+    if (loopSetTo8) {
+      this.state.decks[deck].currentLoopSize = 8;
+    } else if (loopSetTo16) {
+      this.state.decks[deck].currentLoopSize = 16;
+    } else if (loopSetTo32) {
+      this.state.decks[deck].currentLoopSize = 32;
+    } else {
+      this.state.decks[deck].currentLoopSize = null;
+    }
   }
 
   private setDeckChanged(...decks: Deck[]) {
@@ -217,6 +314,10 @@ export class MidiMessageHandler {
           "jumpForwardA",
           "jumpBackA",
           "loadA",
+          "loopA",
+          "loopControl8A",
+          "loopControl16A",
+          "loopControl32A",
           "tempoFasterA",
           "tempoSlowerA",
         );
@@ -229,6 +330,10 @@ export class MidiMessageHandler {
           "jumpForwardB",
           "jumpBackB",
           "loadB",
+          "loopB",
+          "loopControl8B",
+          "loopControl16B",
+          "loopControl32B",
           "tempoFasterB",
           "tempoSlowerB",
         );

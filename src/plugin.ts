@@ -11,6 +11,14 @@ import {
   JumpForwardB,
   LoadA,
   LoadB,
+  LoopA,
+  LoopB,
+  LoopControl8A,
+  LoopControl8B,
+  LoopControl16A,
+  LoopControl16B,
+  LoopControl32A,
+  LoopControl32B,
   PlayA,
   PlayB,
   TempoFasterA,
@@ -38,6 +46,14 @@ const jumpForwardA = new JumpForwardA(handleKeyDown, handleKeyUp);
 const jumpForwardB = new JumpForwardB(handleKeyDown, handleKeyUp);
 const loadA = new LoadA(handleKeyDown, handleKeyUp);
 const loadB = new LoadB(handleKeyDown, handleKeyUp);
+const loopA = new LoopA(handleKeyDown);
+const loopB = new LoopB(handleKeyDown);
+const loopControl8A = new LoopControl8A(handleKeyDown);
+const loopControl8B = new LoopControl8B(handleKeyDown);
+const loopControl16A = new LoopControl16A(handleKeyDown);
+const loopControl16B = new LoopControl16B(handleKeyDown);
+const loopControl32A = new LoopControl32A(handleKeyDown);
+const loopControl32B = new LoopControl32B(handleKeyDown);
 const playA = new PlayA(handleKeyDown);
 const playB = new PlayB(handleKeyDown);
 const tempoFasterA = new TempoFasterA(handleKeyDown, handleKeyUp);
@@ -53,6 +69,14 @@ streamDeck.actions.registerAction(jumpForwardA);
 streamDeck.actions.registerAction(jumpForwardB);
 streamDeck.actions.registerAction(loadA);
 streamDeck.actions.registerAction(loadB);
+streamDeck.actions.registerAction(loopA);
+streamDeck.actions.registerAction(loopB);
+streamDeck.actions.registerAction(loopControl8A);
+streamDeck.actions.registerAction(loopControl8B);
+streamDeck.actions.registerAction(loopControl16A);
+streamDeck.actions.registerAction(loopControl16B);
+streamDeck.actions.registerAction(loopControl32A);
+streamDeck.actions.registerAction(loopControl32B);
 streamDeck.actions.registerAction(playA);
 streamDeck.actions.registerAction(playB);
 streamDeck.actions.registerAction(tempoFasterA);
@@ -65,14 +89,17 @@ streamDeck.connect();
 const keys: Keys = {
   cueA: {
     action: cueA,
+    controller: "isCueing",
     hasChanged: false,
     deck: deck.a,
   },
   cueB: {
     action: cueB,
+    controller: "isCueing",
     hasChanged: false,
     deck: deck.b,
   },
+
   jumpBackA: {
     action: jumpBackA,
     hasChanged: false,
@@ -103,16 +130,68 @@ const keys: Keys = {
     hasChanged: false,
     deck: deck.b,
   },
+  loopControl8A: {
+    action: loopControl8A,
+    controller: "loopSetTo8",
+    hasChanged: false,
+    deck: deck.a,
+  },
+
+  loopControl8B: {
+    action: loopControl8B,
+    controller: "loopSetTo8",
+    hasChanged: false,
+    deck: deck.b,
+  },
+  loopControl16A: {
+    action: loopControl16A,
+    controller: "loopSetTo16",
+    hasChanged: false,
+    deck: deck.a,
+  },
+  loopControl16B: {
+    action: loopControl16B,
+    controller: "loopSetTo16",
+    hasChanged: false,
+    deck: deck.b,
+  },
+  loopControl32A: {
+    action: loopControl32A,
+    controller: "loopSetTo32",
+    hasChanged: false,
+    deck: deck.a,
+  },
+  loopControl32B: {
+    action: loopControl32B,
+    controller: "loopSetTo32",
+    hasChanged: false,
+    deck: deck.b,
+  },
+  loopA: {
+    action: loopA,
+    controller: "isLooping",
+    hasChanged: false,
+    deck: deck.a,
+  },
+  loopB: {
+    action: loopB,
+    controller: "isLooping",
+    hasChanged: false,
+    deck: deck.b,
+  },
   playA: {
     action: playA,
+    controller: "isPlaying",
     hasChanged: false,
     deck: deck.a,
   },
   playB: {
     action: playB,
+    controller: "isPlaying",
     hasChanged: false,
     deck: deck.b,
   },
+
   tempoFasterA: {
     action: tempoFasterA,
     hasChanged: false,

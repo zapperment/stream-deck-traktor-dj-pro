@@ -21,8 +21,8 @@ export class JumpForward extends DeckStateAwareAction {
     this.handleKeyUp = handleKeyUp;
   }
 
-  updateKey({ isPressed }: { isPressed: boolean }) {
-    const image = `imgs/actions/jump-forward/jump-forward-${isPressed ? "pressed" : "normal"}-${this.isHot ? "hot" : "cold"}.svg`;
+  updateKey({ isOn }: { isOn: boolean } = { isOn: false }) {
+    const image = `imgs/actions/jump-forward/jump-forward-${isOn ? "pressed" : "normal"}-${this.isHot ? "hot" : "cold"}.svg`;
     streamDeck.logger.info(`[JumpForward] setting key image to ${image}!`);
     return Promise.all(this.actions.map((action) => action.setImage(image)));
   }
