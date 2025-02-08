@@ -15,8 +15,12 @@ export class JumpForward extends DeckStateAwareAction {
   constructor(
     handleKeyDown: (key: "jumpForwardA" | "jumpForwardB") => void,
     handleKeyUp: (key: "jumpForwardA" | "jumpForwardB") => void,
+    deck: Deck,
   ) {
-    super();
+    super({
+      blockHot: false,
+      deck,
+    });
     this.handleKeyDown = handleKeyDown;
     this.handleKeyUp = handleKeyUp;
   }

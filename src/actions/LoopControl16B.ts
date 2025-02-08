@@ -1,5 +1,6 @@
 import { action } from "@elgato/streamdeck";
 import { TraktorControlledAction } from "./TraktorControlledAction";
+import { controller, deck } from "../config";
 
 /**
  * Selects loop size 16 beats and sets the loop on deck B
@@ -17,6 +18,9 @@ export class LoopControl16B extends TraktorControlledAction {
         offHot: "imgs/actions/loop-control-16/loop-control-16-inactive-hot.svg",
       },
       handleKeyDown,
+      controller: controller.loopSetTo16,
+      blockHot: false,
+      deck: deck.b,
     });
   }
 }

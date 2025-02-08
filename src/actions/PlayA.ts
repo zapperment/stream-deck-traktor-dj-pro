@@ -1,5 +1,6 @@
 import { action } from "@elgato/streamdeck";
 import { TraktorControlledAction } from "./TraktorControlledAction";
+import { controller, deck } from "../config";
 
 /**
  * Starts/stops playing deck A
@@ -16,6 +17,9 @@ export class PlayA extends TraktorControlledAction {
         offHot: "imgs/actions/play/play-stopped-hot.svg",
       },
       handleKeyDown,
+      controller: controller.isPlaying,
+      blockHot: true,
+      deck: deck.a,
     });
   }
 }

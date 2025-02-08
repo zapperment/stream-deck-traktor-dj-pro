@@ -31,10 +31,10 @@ export class MidiMessageHandler {
     },
   };
 
-  private keys: Keys;
+  private actions: Record<Key, Action>;
 
-  constructor(keys: Keys) {
-    this.keys = keys;
+  constructor(actions: Record<Key, Action>) {
+    this.actions = actions;
   }
 
   handleMidiMessage(message: MidiMessage) {
@@ -94,15 +94,13 @@ export class MidiMessageHandler {
       "playA",
       "playB",
     ].forEach((key) => {
-      const keyState = this.keys[key as keyof Keys];
-      if (keyState.hasChanged) {
-        keyState.action.updateKey({
-          isOn: this.state.decks[keyState.deck][
-            keyState.controller as Controller
-          ],
-          isHot: this.isHot(keyState.deck),
+      const action = this.actions[key as keyof Keys];
+      if (action.hasChanged) {
+        action.updateKey({
+          isOn: this.state.decks[action.deck][action.controller as Controller],
+          isHot: this.isHot(action.deck),
         });
-        keyState.hasChanged = false;
+        action.hasChanged = false;
       }
     });
 
@@ -118,22 +116,12 @@ export class MidiMessageHandler {
       "tempoSlowerA",
       "tempoSlowerB",
     ].forEach((key) => {
-      const keyState = this.keys[key as keyof Keys];
-      if (keyState.hasChanged) {
-        keyState.action.updateKey();
-        keyState.hasChanged = false;
+      const action = this.actions[key as keyof Keys];
+      if (action.hasChanged) {
+        action.updateKey();
+        action.hasChanged = false;
       }
     });
-
-    for (const key of Object.values(this.keys)) {
-      if (key.hasChanged) {
-        streamDeck.logger.info(
-          `[handleMidiMessage] updating key ${JSON.stringify(this.state.decks[key.deck as Deck])}`,
-        );
-        key.action.updateKey(this.state.decks[key.deck as Deck]);
-        key.hasChanged = false;
-      }
-    }
   }
 
   isHot(deck: Deck) {
@@ -219,7 +207,7 @@ export class MidiMessageHandler {
   }) {
     const isOn = value === 127;
     if (this.state.decks[deck][controller] !== isOn) {
-      this.keys[key].hasChanged = true;
+      this.actions[key].hasChanged = true;
       this.state.decks[deck][controller] = isOn;
     }
     streamDeck.logger.info(
@@ -343,9 +331,9 @@ export class MidiMessageHandler {
 
   private setKeyChanged(...keys: Key[]) {
     for (const key of keys) {
-      this.keys[key].hasChanged = true;
+      this.actions[key].hasChanged = true;
       streamDeck.logger.info(
-        `[handleMidiMessage] hasChanged: ${this.keys[key].hasChanged}`,
+        `[handleMidiMessage] hasChanged: ${this.actions[key].hasChanged}`,
       );
     }
   }

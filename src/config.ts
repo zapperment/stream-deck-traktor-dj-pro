@@ -46,3 +46,12 @@ export const midiControlValueToLoopControl = [
   "loopSetTo16", // 9
   "loopSetTo32", // 10
 ];
+
+export const controller = {
+  isPlaying: "isPlaying" as Controller,
+  isCueing: "isCueing" as Controller,
+  isLooping: "isLooping" as Controller,
+  loopSetTo8: "loopSetTo8" as Controller,
+  loopSetTo16: "loopSetTo16" as Controller,
+  loopSetTo32: "loopSetTo32" as Controller,
+};

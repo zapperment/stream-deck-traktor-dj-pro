@@ -1,6 +1,6 @@
 import { action } from "@elgato/streamdeck";
 import { TraktorControlledAction } from "./TraktorControlledAction";
-
+import { controller, deck } from "../config";
 /**
  * Turns loop on deck B on and off
  */
@@ -16,6 +16,9 @@ export class LoopB extends TraktorControlledAction {
         offHot: "imgs/actions/loop/loop-inactive-hot.svg",
       },
       handleKeyDown,
+      controller: controller.isLooping,
+      blockHot: false,
+      deck: deck.b,
     });
   }
 }

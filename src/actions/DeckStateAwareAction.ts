@@ -1,9 +1,9 @@
-import { SingletonAction } from "@elgato/streamdeck";
+import { BaseAction } from "./BaseAction";
 
 /**
  * An action that knows if its deck is hot or cold
  */
-export class DeckStateAwareAction extends SingletonAction {
+export class DeckStateAwareAction extends BaseAction {
   protected _isHot: () => boolean = () => false;
 
   set isHot(value: () => boolean) {

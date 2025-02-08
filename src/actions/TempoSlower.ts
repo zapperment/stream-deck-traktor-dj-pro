@@ -15,8 +15,12 @@ export class TempoSlower extends DeckStateAwareAction {
   constructor(
     handleKeyDown: (key: "tempoSlowerA" | "tempoSlowerB") => void,
     handleKeyUp: (key: "tempoSlowerA" | "tempoSlowerB") => void,
+    deck: Deck,
   ) {
-    super();
+    super({
+      blockHot: false,
+      deck,
+    });
     this.handleKeyDown = handleKeyDown;
     this.handleKeyUp = handleKeyUp;
   }

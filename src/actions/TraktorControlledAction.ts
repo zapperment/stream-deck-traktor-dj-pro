@@ -1,6 +1,7 @@
-import streamDeck, { SingletonAction } from "@elgato/streamdeck";
+import streamDeck from "@elgato/streamdeck";
+import { BaseAction } from "./BaseAction";
 
-export class TraktorControlledAction extends SingletonAction {
+export class TraktorControlledAction extends BaseAction {
   private readonly key: Key;
   protected readonly handleKeyDown: (key: Key) => void;
   protected readonly handleKeyUp: (key: Key) => void;
@@ -16,17 +17,23 @@ export class TraktorControlledAction extends SingletonAction {
     img,
     handleKeyDown,
     handleKeyUp,
+    controller,
+    blockHot,
+    deck,
   }: {
     key: Key;
     img: Img;
     handleKeyDown: (key: Key) => void;
     handleKeyUp?: (key: Key) => void;
+    controller?: Controller;
+    blockHot: boolean;
+    deck: Deck;
   }) {
-    super();
+    super({ controller, blockHot, deck });
     this.key = key;
     this.img = img;
     this.handleKeyDown = handleKeyDown;
-    this.handleKeyUp = handleKeyUp || ((key) => {});
+    this.handleKeyUp = handleKeyUp || (() => {});
   }
 
   override async onKeyDown(): Promise<void> {
@@ -37,7 +44,12 @@ export class TraktorControlledAction extends SingletonAction {
     this.handleKeyUp(this.key);
   }
 
-  updateKey({ isOn, isHot }: { isOn: boolean; isHot: boolean }) {
+  updateKey(
+    { isOn, isHot }: { isOn: boolean; isHot?: boolean } = {
+      isOn: false,
+      isHot: false,
+    },
+  ) {
     const image = isOn
       ? isHot
         ? this.img.onHot

@@ -1,5 +1,6 @@
 import { action } from "@elgato/streamdeck";
 import { TraktorControlledAction } from "./TraktorControlledAction";
+import { deck, controller } from "../config";
 
 /**
  * Cue deck A
@@ -20,6 +21,9 @@ export class CueA extends TraktorControlledAction {
       },
       handleKeyDown,
       handleKeyUp,
+      controller: controller.isCueing,
+      blockHot: true,
+      deck: deck.a,
     });
   }
 }

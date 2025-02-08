@@ -11,8 +11,12 @@ export class JumpBack extends DeckStateAwareAction {
   constructor(
     handleKeyDown: (key: "jumpBackA" | "jumpBackB") => void,
     handleKeyUp: (key: "jumpBackA" | "jumpBackB") => void,
+    deck: Deck,
   ) {
-    super();
+    super({
+      blockHot: false,
+      deck,
+    });
     this.handleKeyDown = handleKeyDown;
     this.handleKeyUp = handleKeyUp;
   }

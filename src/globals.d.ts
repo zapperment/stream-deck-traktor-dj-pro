@@ -38,6 +38,7 @@ type Keys = Record<
     action: SingletonAction;
     hasChanged: boolean;
     controller?: Controller;
+    blockHot: boolean;
     deck: Deck;
   }
 >;
@@ -67,4 +68,11 @@ interface DeckState {
   loopSetTo32: boolean;
   isHot: boolean;
   currentLoopSize: number | null;
+}
+
+interface Action {
+  hasChanged: boolean;
+  updateKey: (state?: { isOn: boolean; isHot?: boolean }) => Promise<void[]>;
+  controller?: Controller;
+  deck: Deck;
 }

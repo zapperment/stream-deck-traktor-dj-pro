@@ -1,5 +1,6 @@
 import { action } from "@elgato/streamdeck";
 import { TraktorControlledAction } from "./TraktorControlledAction";
+import { controller, deck } from "../config";
 
 /**
  * Selects loop size 8 beats and sets the loop on deck A
@@ -16,6 +17,9 @@ export class LoopControl8A extends TraktorControlledAction {
         offHot: "imgs/actions/loop-control-8/loop-control-8-inactive-hot.svg",
       },
       handleKeyDown,
+      controller: controller.loopSetTo8,
+      blockHot: false,
+      deck: deck.a,
     });
   }
 }

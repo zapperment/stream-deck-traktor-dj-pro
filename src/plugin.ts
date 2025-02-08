@@ -1,6 +1,6 @@
 import type { Input, Output } from "@julusian/midi";
 
-import streamDeck, { LogLevel } from "@elgato/streamdeck";
+import streamDeck, { LogLevel, SingletonAction } from "@elgato/streamdeck";
 
 import {
   CueA,
@@ -86,135 +86,32 @@ streamDeck.actions.registerAction(tempoSlowerB);
 
 streamDeck.connect();
 
-const keys: Keys = {
-  cueA: {
-    action: cueA,
-    controller: "isCueing",
-    hasChanged: false,
-    deck: deck.a,
-  },
-  cueB: {
-    action: cueB,
-    controller: "isCueing",
-    hasChanged: false,
-    deck: deck.b,
-  },
-
-  jumpBackA: {
-    action: jumpBackA,
-    hasChanged: false,
-    deck: deck.a,
-  },
-  jumpBackB: {
-    action: jumpBackB,
-    hasChanged: false,
-    deck: deck.b,
-  },
-  jumpForwardA: {
-    action: jumpForwardA,
-    hasChanged: false,
-    deck: deck.a,
-  },
-  jumpForwardB: {
-    action: jumpForwardB,
-    hasChanged: false,
-    deck: deck.b,
-  },
-  loadA: {
-    action: loadA,
-    hasChanged: false,
-    deck: deck.a,
-  },
-  loadB: {
-    action: loadB,
-    hasChanged: false,
-    deck: deck.b,
-  },
-  loopControl8A: {
-    action: loopControl8A,
-    controller: "loopSetTo8",
-    hasChanged: false,
-    deck: deck.a,
-  },
-
-  loopControl8B: {
-    action: loopControl8B,
-    controller: "loopSetTo8",
-    hasChanged: false,
-    deck: deck.b,
-  },
-  loopControl16A: {
-    action: loopControl16A,
-    controller: "loopSetTo16",
-    hasChanged: false,
-    deck: deck.a,
-  },
-  loopControl16B: {
-    action: loopControl16B,
-    controller: "loopSetTo16",
-    hasChanged: false,
-    deck: deck.b,
-  },
-  loopControl32A: {
-    action: loopControl32A,
-    controller: "loopSetTo32",
-    hasChanged: false,
-    deck: deck.a,
-  },
-  loopControl32B: {
-    action: loopControl32B,
-    controller: "loopSetTo32",
-    hasChanged: false,
-    deck: deck.b,
-  },
-  loopA: {
-    action: loopA,
-    controller: "isLooping",
-    hasChanged: false,
-    deck: deck.a,
-  },
-  loopB: {
-    action: loopB,
-    controller: "isLooping",
-    hasChanged: false,
-    deck: deck.b,
-  },
-  playA: {
-    action: playA,
-    controller: "isPlaying",
-    hasChanged: false,
-    deck: deck.a,
-  },
-  playB: {
-    action: playB,
-    controller: "isPlaying",
-    hasChanged: false,
-    deck: deck.b,
-  },
-
-  tempoFasterA: {
-    action: tempoFasterA,
-    hasChanged: false,
-    deck: deck.a,
-  },
-  tempoFasterB: {
-    action: tempoFasterB,
-    hasChanged: false,
-    deck: deck.b,
-  },
-  tempoSlowerA: {
-    action: tempoSlowerA,
-    hasChanged: false,
-    deck: deck.a,
-  },
-  tempoSlowerB: {
-    action: tempoSlowerB,
-    hasChanged: false,
-    deck: deck.b,
-  },
+const actions: Record<Key, Action> = {
+  cueA,
+  cueB,
+  jumpBackA,
+  jumpBackB,
+  jumpForwardA,
+  jumpForwardB,
+  loadA,
+  loadB,
+  loopControl8A,
+  loopControl8B,
+  loopControl16A,
+  loopControl16B,
+  loopControl32A,
+  loopControl32B,
+  loopA,
+  loopB,
+  playA,
+  playB,
+  tempoFasterA,
+  tempoFasterB,
+  tempoSlowerA,
+  tempoSlowerB,
 };
 
-const midiMessageHandler = new MidiMessageHandler(keys);
+const midiMessageHandler = new MidiMessageHandler(actions);
 
 jumpBackA.isHot = () => midiMessageHandler.isHot(deck.a);
 jumpBackB.isHot = () => midiMessageHandler.isHot(deck.b);

@@ -11,8 +11,12 @@ export class Load extends DeckStateAwareAction {
   constructor(
     handleKeyDown: (key: "loadA" | "loadB") => void,
     handleKeyUp: (key: "loadA" | "loadB") => void,
+    deck: Deck,
   ) {
-    super();
+    super({
+      blockHot: true,
+      deck,
+    });
     this.handleKeyDown = handleKeyDown;
     this.handleKeyUp = handleKeyUp;
   }
