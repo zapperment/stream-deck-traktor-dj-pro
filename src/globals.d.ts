@@ -10,7 +10,11 @@ type Key =
   | "jumpBackA"
   | "jumpBackB"
   | "loadA"
-  | "loadB";
+  | "loadB"
+  | "tempoFasterA"
+  | "tempoFasterB"
+  | "tempoSlowerA"
+  | "tempoSlowerB";
 
 type Keys = Record<
   Key,

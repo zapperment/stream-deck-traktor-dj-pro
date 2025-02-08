@@ -8,3 +8,7 @@ export * from "./LoadA";
 export * from "./LoadB";
 export * from "./PlayA";
 export * from "./PlayB";
+export * from "./TempoFasterA";
+export * from "./TempoFasterB";
+export * from "./TempoSlowerA";
+export * from "./TempoSlowerB";

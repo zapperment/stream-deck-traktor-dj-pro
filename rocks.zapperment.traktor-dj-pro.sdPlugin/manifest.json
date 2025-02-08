@@ -132,10 +132,62 @@
           "TitleAlignment": "middle"
         }
       ]
+    },
+    {
+      "Name": "Tempo Faster Deck A",
+      "UUID": "rocks.zapperment.traktor-dj-pro.tempo-faster-a",
+      "Icon": "imgs/actions/tempo-faster/tempo-faster-normal-cold",
+      "Tooltip": "Makes tempo of deck A faster",
+      "Controllers": ["Keypad"],
+      "States": [
+        {
+          "Image": "imgs/actions/tempo-faster/tempo-faster-normal-cold",
+          "TitleAlignment": "middle"
+        }
+      ]
+    },
+    {
+      "Name": "Tempo Faster Deck B",
+      "UUID": "rocks.zapperment.traktor-dj-pro.tempo-faster-b",
+      "Icon": "imgs/actions/tempo-faster/tempo-faster-normal-cold",
+      "Tooltip": "Makes tempo of deck B faster",
+      "Controllers": ["Keypad"],
+      "States": [
+        {
+          "Image": "imgs/actions/tempo-faster/tempo-faster-normal-cold",
+          "TitleAlignment": "middle"
+        }
+      ]
+    },
+    {
+      "Name": "Tempo Slower Deck A",
+      "UUID": "rocks.zapperment.traktor-dj-pro.tempo-slower-a",
+      "Icon": "imgs/actions/tempo-slower/tempo-slower-normal-cold",
+      "Tooltip": "Makes tempo of deck A slower",
+      "Controllers": ["Keypad"],
+      "States": [
+        {
+          "Image": "imgs/actions/tempo-slower/tempo-slower-normal-cold",
+          "TitleAlignment": "middle"
+        }
+      ]
+    },
+    {
+      "Name": "Tempo Slower Deck B",
+      "UUID": "rocks.zapperment.traktor-dj-pro.tempo-slower-b",
+      "Icon": "imgs/actions/tempo-slower/tempo-slower-normal-cold",
+      "Tooltip": "Makes tempo of deck B slower",
+      "Controllers": ["Keypad"],
+      "States": [
+        {
+          "Image": "imgs/actions/tempo-slower/tempo-slower-normal-cold",
+          "TitleAlignment": "middle"
+        }
+      ]
     }
   ],
-  "Category": "Traktor DJ Pro",
 
+  "Category": "Traktor DJ Pro",
   "CategoryIcon": "imgs/plugin/category-icon",
   "CodePath": "bin/plugin.js",
   "Description": "Control Traktor DJ Pro with your Stream Deck",

@@ -10,6 +10,8 @@ export const midiControl = {
   play: 0,
   cue: 1,
   crossfader: 0,
+  tempoFaster: 7,
+  tempoSlower: 8,
   load: 9,
   jumpForward: 10,
   jumpBack: 11,
