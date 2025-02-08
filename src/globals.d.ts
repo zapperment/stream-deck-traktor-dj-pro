@@ -8,7 +8,10 @@ type Key =
   | "jumpForwardA"
   | "jumpForwardB"
   | "jumpBackA"
-  | "jumpBackB";
+  | "jumpBackB"
+  | "loadA"
+  | "loadB";
+
 type Keys = Record<
   Key,
   {

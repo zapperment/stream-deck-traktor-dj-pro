@@ -1,6 +1,5 @@
 import { action } from "@elgato/streamdeck";
 import { JumpBack } from "./JumpBack";
-import { deck } from "../config";
 
 /**
  * Jump back deck B

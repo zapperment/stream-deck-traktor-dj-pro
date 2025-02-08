@@ -4,5 +4,7 @@ export * from "./JumpBackA";
 export * from "./JumpBackB";
 export * from "./JumpForwardA";
 export * from "./JumpForwardB";
+export * from "./LoadA";
+export * from "./LoadB";
 export * from "./PlayA";
 export * from "./PlayB";

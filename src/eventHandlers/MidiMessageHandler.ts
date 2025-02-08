@@ -117,6 +117,7 @@ export class MidiMessageHandler {
             this.keys.cueA.hasChanged = true;
             this.keys.jumpForwardA.hasChanged = true;
             this.keys.jumpBackA.hasChanged = true;
+            this.keys.loadA.hasChanged = true;
             streamDeck.logger.info(
               `[handleMidiMessage] fader all the way to the right: deck A is now cold`,
             );
@@ -127,6 +128,7 @@ export class MidiMessageHandler {
             this.keys.cueB.hasChanged = true;
             this.keys.jumpForwardB.hasChanged = true;
             this.keys.jumpBackB.hasChanged = true;
+            this.keys.loadB.hasChanged = true;
             streamDeck.logger.info(
               `[handleMidiMessage] fader all the way to the right: deck B is now hot`,
             );
@@ -142,6 +144,7 @@ export class MidiMessageHandler {
             this.keys.cueA.hasChanged = true;
             this.keys.jumpForwardA.hasChanged = true;
             this.keys.jumpBackA.hasChanged = true;
+            this.keys.loadA.hasChanged = true;
             streamDeck.logger.info(
               `[handleMidiMessage] fader all the way to the left: deck A is now hot`,
             );
@@ -152,6 +155,7 @@ export class MidiMessageHandler {
             this.keys.cueB.hasChanged = true;
             this.keys.jumpForwardB.hasChanged = true;
             this.keys.jumpBackB.hasChanged = true;
+            this.keys.loadB.hasChanged = true;
             streamDeck.logger.info(
               `[handleMidiMessage] fader all the way to the left: deck B is now cold`,
             );
@@ -167,6 +171,7 @@ export class MidiMessageHandler {
             this.keys.cueA.hasChanged = true;
             this.keys.jumpForwardA.hasChanged = true;
             this.keys.jumpBackA.hasChanged = true;
+            this.keys.loadA.hasChanged = true;
             streamDeck.logger.info(
               `[handleMidiMessage] fader is in the middle: deck A is now hot`,
             );
@@ -177,6 +182,7 @@ export class MidiMessageHandler {
             this.keys.cueB.hasChanged = true;
             this.keys.jumpForwardB.hasChanged = true;
             this.keys.jumpBackB.hasChanged = true;
+            this.keys.loadB.hasChanged = true;
             streamDeck.logger.info(
               `[handleMidiMessage] fader is in the middle: deck B is now hot`,
             );

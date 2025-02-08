@@ -106,6 +106,32 @@
           "TitleAlignment": "middle"
         }
       ]
+    },
+    {
+      "Name": "Load Deck A",
+      "UUID": "rocks.zapperment.traktor-dj-pro.load-a",
+      "Icon": "imgs/actions/load/load-normal-cold",
+      "Tooltip": "Loads selected track todeck A",
+      "Controllers": ["Keypad"],
+      "States": [
+        {
+          "Image": "imgs/actions/load/load-normal-cold",
+          "TitleAlignment": "middle"
+        }
+      ]
+    },
+    {
+      "Name": "Load Deck B",
+      "UUID": "rocks.zapperment.traktor-dj-pro.load-b",
+      "Icon": "imgs/actions/load/load-normal-cold",
+      "Tooltip": "Loads selected track to deck B",
+      "Controllers": ["Keypad"],
+      "States": [
+        {
+          "Image": "imgs/actions/load/load-normal-cold",
+          "TitleAlignment": "middle"
+        }
+      ]
     }
   ],
   "Category": "Traktor DJ Pro",

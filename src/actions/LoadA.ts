@@ -1,22 +1,22 @@
 import { action } from "@elgato/streamdeck";
-import { JumpBack } from "./JumpBack";
+import { Load } from "./Load";
 
 /**
- * Jump back deck A
+ * Load deck A
  */
-@action({ UUID: "rocks.zapperment.traktor-dj-pro.jump-back-a" })
-export class JumpBackA extends JumpBack {
+@action({ UUID: "rocks.zapperment.traktor-dj-pro.load-a" })
+export class LoadA extends Load {
   override async onKeyDown(): Promise<void> {
     this.updateKey({
       isPressed: true,
     });
-    this.handleKeyDown("jumpBackA");
+    this.handleKeyDown("loadA");
   }
 
   override async onKeyUp(): Promise<void> {
     this.updateKey({
       isPressed: false,
     });
-    this.handleKeyUp("jumpBackA");
+    this.handleKeyUp("loadA");
   }
 }

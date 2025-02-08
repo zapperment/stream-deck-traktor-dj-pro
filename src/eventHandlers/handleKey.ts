@@ -8,24 +8,6 @@ export function createKeyHandler(keyDirection: KeyDirection, output: Output) {
   return (key: Key) => {
     streamDeck.logger.info(`[handleKey] ${key} ${keyDirection}`);
     switch (key) {
-      case "playA":
-        output.send(
-          createControlChangeMessage(
-            midiChannel.sendDeckA,
-            midiControl.play,
-            value,
-          ),
-        );
-        break;
-      case "playB":
-        output.send(
-          createControlChangeMessage(
-            midiChannel.sendDeckB,
-            midiControl.play,
-            value,
-          ),
-        );
-        break;
       case "cueA":
         output.send(
           createControlChangeMessage(
@@ -40,6 +22,24 @@ export function createKeyHandler(keyDirection: KeyDirection, output: Output) {
           createControlChangeMessage(
             midiChannel.sendDeckB,
             midiControl.cue,
+            value,
+          ),
+        );
+        break;
+      case "jumpBackA":
+        output.send(
+          createControlChangeMessage(
+            midiChannel.sendDeckA,
+            midiControl.jumpBack,
+            value,
+          ),
+        );
+        break;
+      case "jumpBackB":
+        output.send(
+          createControlChangeMessage(
+            midiChannel.sendDeckB,
+            midiControl.jumpBack,
             value,
           ),
         );
@@ -62,20 +62,38 @@ export function createKeyHandler(keyDirection: KeyDirection, output: Output) {
           ),
         );
         break;
-      case "jumpBackA":
+      case "loadA":
         output.send(
           createControlChangeMessage(
             midiChannel.sendDeckA,
-            midiControl.jumpBack,
+            midiControl.load,
             value,
           ),
         );
         break;
-      case "jumpBackB":
+      case "loadB":
         output.send(
           createControlChangeMessage(
             midiChannel.sendDeckB,
-            midiControl.jumpBack,
+            midiControl.load,
+            value,
+          ),
+        );
+        break;
+      case "playA":
+        output.send(
+          createControlChangeMessage(
+            midiChannel.sendDeckA,
+            midiControl.play,
+            value,
+          ),
+        );
+        break;
+      case "playB":
+        output.send(
+          createControlChangeMessage(
+            midiChannel.sendDeckB,
+            midiControl.play,
             value,
           ),
         );
