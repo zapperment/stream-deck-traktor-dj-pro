@@ -1,10 +1,10 @@
 import streamDeck from "@elgato/streamdeck";
-import { Jump } from "./Jump";
+import { DeckStateAwareAction } from "./DeckStateAwareAction";
 
 /**
  * Jump back button; base class for JumpBackA and JumpBackB
  */
-export class JumpBack extends Jump {
+export class JumpBack extends DeckStateAwareAction {
   protected readonly handleKeyDown: (key: "jumpBackA" | "jumpBackB") => void;
   protected readonly handleKeyUp: (key: "jumpBackA" | "jumpBackB") => void;
 
