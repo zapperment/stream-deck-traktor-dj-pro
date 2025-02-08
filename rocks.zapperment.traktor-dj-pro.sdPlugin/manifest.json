@@ -28,6 +28,32 @@
           "TitleAlignment": "middle"
         }
       ]
+    },
+    {
+      "Name": "Cue Deck A",
+      "UUID": "rocks.zapperment.traktor-dj-pro.cue-a",
+      "Icon": "imgs/actions/cue/cue-normal-cold",
+      "Tooltip": "Cues deck A",
+      "Controllers": ["Keypad"],
+      "States": [
+        {
+          "Image": "imgs/actions/cue/cue-normal-cold",
+          "TitleAlignment": "middle"
+        }
+      ]
+    },
+    {
+      "Name": "Cue Deck B",
+      "UUID": "rocks.zapperment.traktor-dj-pro.cue-b",
+      "Icon": "imgs/actions/cue/cue-normal-cold",
+      "Tooltip": "Cues deck B",
+      "Controllers": ["Keypad"],
+      "States": [
+        {
+          "Image": "imgs/actions/cue/cue-normal-cold",
+          "TitleAlignment": "middle"
+        }
+      ]
     }
   ],
   "Category": "Traktor DJ Pro",

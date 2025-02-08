@@ -1,0 +1,51 @@
+import type { Output } from "@julusian/midi";
+import streamDeck from "@elgato/streamdeck";
+import { createControlChangeMessage } from "../midi";
+import { midiChannel, midiControl } from "../config";
+
+export function createKeyHandler(keyDirection: KeyDirection, output: Output) {
+  const value = keyDirection === "down" ? 127 : 0;
+  return (key: Key) => {
+    streamDeck.logger.info(`[handleKey] ${key} ${keyDirection}`);
+    switch (key) {
+      case "playA":
+        output.send(
+          createControlChangeMessage(
+            midiChannel.sendDeckA,
+            midiControl.play,
+            value,
+          ),
+        );
+        break;
+      case "playB":
+        output.send(
+          createControlChangeMessage(
+            midiChannel.sendDeckB,
+            midiControl.play,
+            value,
+          ),
+        );
+        break;
+      case "cueA":
+        output.send(
+          createControlChangeMessage(
+            midiChannel.sendDeckA,
+            midiControl.cue,
+            value,
+          ),
+        );
+        break;
+      case "cueB":
+        output.send(
+          createControlChangeMessage(
+            midiChannel.sendDeckB,
+            midiControl.cue,
+            value,
+          ),
+        );
+        break;
+      default:
+        streamDeck.logger.error(`[handleKey] unknown key: ${key}`);
+    }
+  };
+}

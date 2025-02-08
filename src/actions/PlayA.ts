@@ -1,5 +1,5 @@
 import { action } from "@elgato/streamdeck";
-import { Play } from "./play";
+import { Play } from "./Play";
 
 /**
  * Starts/stops playing deck A
