@@ -4,7 +4,7 @@ import { isControlChange } from "../midi/isControlChange";
 import { getMidiChannel } from "../midi/getMidiChannel";
 import streamDeck from "@elgato/streamdeck";
 import { midiChannel } from "../config";
-
+import { TraktorAction } from "../actions/TraktorAction";
 export class MidiMessageHandler {
   private state: State = {
     decks: {
@@ -31,9 +31,9 @@ export class MidiMessageHandler {
     },
   };
 
-  private actions: Record<Key, Action>;
+  private actions: Record<Key, TraktorAction>;
 
-  constructor(actions: Record<Key, Action>) {
+  constructor(actions: Record<Key, TraktorAction>) {
     this.actions = actions;
   }
 
@@ -71,11 +71,12 @@ export class MidiMessageHandler {
       }
     }
 
+    let deckChanged = false;
     if (
       channel === midiChannel.receiveGlobal &&
       control === midiControl.crossfader
     ) {
-      this.handleCrossfader(value);
+      deckChanged = this.handleCrossfader(value);
     }
 
     // Update keys if there are changes
@@ -96,10 +97,12 @@ export class MidiMessageHandler {
     ].forEach((key) => {
       const action = this.actions[key as keyof Keys];
       if (action.hasChanged) {
-        action.updateKey({
-          isOn: this.state.decks[action.deck][action.controller as Controller],
-          isHot: this.isHot(action.deck),
-        });
+        if (deckChanged) {
+          action.isHot = this.isHot(action.deck);
+        }
+        action.updateKey(
+          this.state.decks[action.deck][action.controller as Controller],
+        );
         action.hasChanged = false;
       }
     });
@@ -118,7 +121,10 @@ export class MidiMessageHandler {
     ].forEach((key) => {
       const action = this.actions[key as keyof Keys];
       if (action.hasChanged) {
-        action.updateKey();
+        if (deckChanged) {
+          action.isHot = this.isHot(action.deck);
+        }
+        action.updateKey(!deckChanged);
         action.hasChanged = false;
       }
     });
@@ -132,12 +138,14 @@ export class MidiMessageHandler {
     streamDeck.logger.info(
       `[handleMidiMessage] received MIDI: crossfader value ${value}`,
     );
+    let deckChanged = false;
     switch (true) {
       // fader all the way to the right,
       // deck A is cold, deck B is hot
       case value === 127:
         if (this.state.decks.a.isHot) {
           this.state.decks.a.isHot = false;
+          deckChanged = true;
           this.setDeckChanged(deck.a);
           streamDeck.logger.info(
             `[handleMidiMessage] fader all the way to the right: deck A is now cold`,
@@ -146,6 +154,7 @@ export class MidiMessageHandler {
 
         if (!this.state.decks.b.isHot) {
           this.state.decks.b.isHot = true;
+          deckChanged = true;
           this.setDeckChanged(deck.b);
           streamDeck.logger.info(
             `[handleMidiMessage] fader all the way to the right: deck B is now hot`,
@@ -158,6 +167,7 @@ export class MidiMessageHandler {
       case value === 0:
         if (!this.state.decks.a.isHot) {
           this.state.decks.a.isHot = true;
+          deckChanged = true;
           this.setDeckChanged(deck.a);
           streamDeck.logger.info(
             `[handleMidiMessage] fader all the way to the left: deck A is now hot`,
@@ -166,6 +176,7 @@ export class MidiMessageHandler {
 
         if (this.state.decks.b.isHot) {
           this.state.decks.b.isHot = false;
+          deckChanged = true;
           this.setDeckChanged(deck.b);
           streamDeck.logger.info(
             `[handleMidiMessage] fader all the way to the left: deck B is now cold`,
@@ -178,6 +189,7 @@ export class MidiMessageHandler {
       default:
         if (!this.state.decks.a.isHot) {
           this.state.decks.a.isHot = true;
+          deckChanged = true;
           this.setDeckChanged(deck.a);
           streamDeck.logger.info(
             `[handleMidiMessage] fader is in the middle: deck A is now hot`,
@@ -186,12 +198,14 @@ export class MidiMessageHandler {
 
         if (!this.state.decks.b.isHot) {
           this.state.decks.b.isHot = true;
+          deckChanged = true;
           this.setDeckChanged(deck.b);
           streamDeck.logger.info(
             `[handleMidiMessage] fader is in the middle: deck B is now hot`,
           );
         }
     }
+    return deckChanged;
   }
 
   private handleTraktorControl({

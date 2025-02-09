@@ -1,13 +1,16 @@
 import { action } from "@elgato/streamdeck";
-import { TraktorControlledAction } from "./TraktorControlledAction";
+import { ToggleTraktorAction } from "./ToggleTraktorAction";
 import { controller, deck } from "../config";
+
 /**
- * Turns loop on deck B on and off
+ * Loop deck B
  */
 @action({ UUID: "rocks.zapperment.traktor-dj-pro.loop-b" })
-export class LoopB extends TraktorControlledAction {
+export class LoopB extends ToggleTraktorAction {
   constructor(handleKeyDown: (key: Key) => void) {
     super({
+      controller: controller.isLooping,
+      deck: deck.b,
       key: "loopB",
       img: {
         onCold: "imgs/actions/loop/loop-active-cold.svg",
@@ -16,9 +19,6 @@ export class LoopB extends TraktorControlledAction {
         offHot: "imgs/actions/loop/loop-inactive-hot.svg",
       },
       handleKeyDown,
-      controller: controller.isLooping,
-      blockHot: false,
-      deck: deck.b,
     });
   }
 }

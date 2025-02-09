@@ -1,14 +1,16 @@
 import { action } from "@elgato/streamdeck";
-import { TraktorControlledAction } from "./TraktorControlledAction";
+import { ToggleTraktorAction } from "./ToggleTraktorAction";
 import { controller, deck } from "../config";
 
 /**
- * Starts/stops playing deck A
+ * Play deck A
  */
 @action({ UUID: "rocks.zapperment.traktor-dj-pro.play-a" })
-export class PlayA extends TraktorControlledAction {
+export class PlayA extends ToggleTraktorAction {
   constructor(handleKeyDown: (key: Key) => void) {
     super({
+      controller: controller.isPlaying,
+      deck: deck.a,
       key: "playA",
       img: {
         onCold: "imgs/actions/play/play-playing-cold.svg",
@@ -17,9 +19,7 @@ export class PlayA extends TraktorControlledAction {
         offHot: "imgs/actions/play/play-stopped-hot.svg",
       },
       handleKeyDown,
-      controller: controller.isPlaying,
       blockHot: true,
-      deck: deck.a,
     });
   }
 }

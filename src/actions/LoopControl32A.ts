@@ -1,14 +1,16 @@
 import { action } from "@elgato/streamdeck";
-import { TraktorControlledAction } from "./TraktorControlledAction";
+import { ToggleTraktorAction } from "./ToggleTraktorAction";
 import { controller, deck } from "../config";
 
 /**
- * Selects loop size 32 beats and sets the loop on deck A
+ * Loop control 32 deck A
  */
 @action({ UUID: "rocks.zapperment.traktor-dj-pro.loop-control-32-a" })
-export class LoopControl32A extends TraktorControlledAction {
+export class LoopControl32A extends ToggleTraktorAction {
   constructor(handleKeyDown: (key: Key) => void) {
     super({
+      controller: controller.loopSetTo32,
+      deck: deck.a,
       key: "loopControl32A",
       img: {
         onCold: "imgs/actions/loop-control-32/loop-control-32-active-cold.svg",
@@ -18,9 +20,6 @@ export class LoopControl32A extends TraktorControlledAction {
         offHot: "imgs/actions/loop-control-32/loop-control-32-inactive-hot.svg",
       },
       handleKeyDown,
-      controller: controller.loopSetTo32,
-      blockHot: false,
-      deck: deck.a,
     });
   }
 }

@@ -1,17 +1,19 @@
 import { action } from "@elgato/streamdeck";
-import { TraktorControlledAction } from "./TraktorControlledAction";
+import { GateTraktorAction } from "./GateTraktorAction";
 import { deck, controller } from "../config";
 
 /**
  * Cue deck A
  */
 @action({ UUID: "rocks.zapperment.traktor-dj-pro.cue-a" })
-export class CueA extends TraktorControlledAction {
+export class CueA extends GateTraktorAction {
   constructor(
     handleKeyDown: (key: Key) => void,
     handleKeyUp: (key: Key) => void,
   ) {
     super({
+      controller: controller.isCueing,
+      deck: deck.a,
       key: "cueA",
       img: {
         onCold: "imgs/actions/cue/cue-pressed-cold.svg",
@@ -21,9 +23,7 @@ export class CueA extends TraktorControlledAction {
       },
       handleKeyDown,
       handleKeyUp,
-      controller: controller.isCueing,
       blockHot: true,
-      deck: deck.a,
     });
   }
 }

@@ -1,30 +1,23 @@
 import { action } from "@elgato/streamdeck";
-import { JumpBack } from "./JumpBack";
+import { TriggerTraktorAction } from "./TriggerTraktorAction";
 import { deck } from "../config";
 
 /**
  * Jump back deck B
  */
 @action({ UUID: "rocks.zapperment.traktor-dj-pro.jump-back-b" })
-export class JumpBackB extends JumpBack {
-  constructor(
-    handleKeyDown: (key: Key) => void,
-    handleKeyUp: (key: Key) => void,
-  ) {
-    super(handleKeyDown, handleKeyUp, deck.b);
-  }
-
-  override async onKeyDown(): Promise<void> {
-    this.updateKey({
-      isOn: true,
+export class JumpBackB extends TriggerTraktorAction {
+  constructor(handleKeyDown: (key: Key) => void) {
+    super({
+      deck: deck.b,
+      key: "jumpBackB",
+      img: {
+        onCold: "imgs/actions/jump-back/jump-back-pressed-cold.svg",
+        onHot: "imgs/actions/jump-back/jump-back-pressed-hot.svg",
+        offCold: "imgs/actions/jump-back/jump-back-normal-cold.svg",
+        offHot: "imgs/actions/jump-back/jump-back-normal-hot.svg",
+      },
+      handleKeyDown,
     });
-    this.handleKeyDown("jumpBackB");
-  }
-
-  override async onKeyUp(): Promise<void> {
-    this.updateKey({
-      isOn: false,
-    });
-    this.handleKeyUp("jumpBackB");
   }
 }

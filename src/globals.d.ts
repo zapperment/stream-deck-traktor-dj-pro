@@ -69,10 +69,3 @@ interface DeckState {
   isHot: boolean;
   currentLoopSize: number | null;
 }
-
-interface Action {
-  hasChanged: boolean;
-  updateKey: (state?: { isOn: boolean; isHot?: boolean }) => Promise<void[]>;
-  controller?: Controller;
-  deck: Deck;
-}

@@ -1,29 +1,23 @@
 import { action } from "@elgato/streamdeck";
-import { TempoFaster } from "./TempoFaster";
+import { TriggerTraktorAction } from "./TriggerTraktorAction";
 import { deck } from "../config";
 
 /**
- * Make tempo of deck B faster
+ * Tempo faster deck B
  */
 @action({ UUID: "rocks.zapperment.traktor-dj-pro.tempo-faster-b" })
-export class TempoFasterB extends TempoFaster {
-  constructor(
-    handleKeyDown: (key: Key) => void,
-    handleKeyUp: (key: Key) => void,
-  ) {
-    super(handleKeyDown, handleKeyUp, deck.a);
-  }
-  override async onKeyDown(): Promise<void> {
-    this.updateKey({
-      isOn: true,
+export class TempoFasterB extends TriggerTraktorAction {
+  constructor(handleKeyDown: (key: Key) => void) {
+    super({
+      deck: deck.b,
+      key: "tempoFasterB",
+      img: {
+        onCold: "imgs/actions/tempo-faster/tempo-faster-pressed-cold.svg",
+        onHot: "imgs/actions/tempo-faster/tempo-faster-pressed-hot.svg",
+        offCold: "imgs/actions/tempo-faster/tempo-faster-normal-cold.svg",
+        offHot: "imgs/actions/tempo-faster/tempo-faster-normal-hot.svg",
+      },
+      handleKeyDown,
     });
-    this.handleKeyDown("tempoFasterB");
-  }
-
-  override async onKeyUp(): Promise<void> {
-    this.updateKey({
-      isOn: false,
-    });
-    this.handleKeyUp("tempoFasterB");
   }
 }

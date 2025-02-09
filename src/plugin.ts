@@ -27,8 +27,9 @@ import {
   TempoSlowerB,
 } from "./actions";
 import { initPort } from "./midi";
-import { deck, keyDirection } from "./config";
+import { keyDirection } from "./config";
 import { MidiMessageHandler, createKeyHandler } from "./eventHandlers";
+import { TraktorAction } from "./actions/TraktorAction";
 
 streamDeck.logger.setLevel(LogLevel.INFO);
 
@@ -40,12 +41,12 @@ const handleKeyUp = createKeyHandler(keyDirection.up, output);
 
 const cueA = new CueA(handleKeyDown, handleKeyUp);
 const cueB = new CueB(handleKeyDown, handleKeyUp);
-const jumpBackA = new JumpBackA(handleKeyDown, handleKeyUp);
-const jumpBackB = new JumpBackB(handleKeyDown, handleKeyUp);
-const jumpForwardA = new JumpForwardA(handleKeyDown, handleKeyUp);
-const jumpForwardB = new JumpForwardB(handleKeyDown, handleKeyUp);
-const loadA = new LoadA(handleKeyDown, handleKeyUp);
-const loadB = new LoadB(handleKeyDown, handleKeyUp);
+const jumpBackA = new JumpBackA(handleKeyDown);
+const jumpBackB = new JumpBackB(handleKeyDown);
+const jumpForwardA = new JumpForwardA(handleKeyDown);
+const jumpForwardB = new JumpForwardB(handleKeyDown);
+const loadA = new LoadA(handleKeyDown);
+const loadB = new LoadB(handleKeyDown);
 const loopA = new LoopA(handleKeyDown);
 const loopB = new LoopB(handleKeyDown);
 const loopControl8A = new LoopControl8A(handleKeyDown);
@@ -56,10 +57,10 @@ const loopControl32A = new LoopControl32A(handleKeyDown);
 const loopControl32B = new LoopControl32B(handleKeyDown);
 const playA = new PlayA(handleKeyDown);
 const playB = new PlayB(handleKeyDown);
-const tempoFasterA = new TempoFasterA(handleKeyDown, handleKeyUp);
-const tempoFasterB = new TempoFasterB(handleKeyDown, handleKeyUp);
-const tempoSlowerA = new TempoSlowerA(handleKeyDown, handleKeyUp);
-const tempoSlowerB = new TempoSlowerB(handleKeyDown, handleKeyUp);
+const tempoFasterA = new TempoFasterA(handleKeyDown);
+const tempoFasterB = new TempoFasterB(handleKeyDown);
+const tempoSlowerA = new TempoSlowerA(handleKeyDown);
+const tempoSlowerB = new TempoSlowerB(handleKeyDown);
 
 streamDeck.actions.registerAction(cueA);
 streamDeck.actions.registerAction(cueB);
@@ -86,7 +87,7 @@ streamDeck.actions.registerAction(tempoSlowerB);
 
 streamDeck.connect();
 
-const actions: Record<Key, Action> = {
+const actions: Record<Key, TraktorAction> = {
   cueA,
   cueB,
   jumpBackA,
@@ -112,17 +113,6 @@ const actions: Record<Key, Action> = {
 };
 
 const midiMessageHandler = new MidiMessageHandler(actions);
-
-jumpBackA.isHot = () => midiMessageHandler.isHot(deck.a);
-jumpBackB.isHot = () => midiMessageHandler.isHot(deck.b);
-jumpForwardA.isHot = () => midiMessageHandler.isHot(deck.a);
-jumpForwardB.isHot = () => midiMessageHandler.isHot(deck.b);
-loadA.isHot = () => midiMessageHandler.isHot(deck.a);
-loadB.isHot = () => midiMessageHandler.isHot(deck.b);
-tempoFasterA.isHot = () => midiMessageHandler.isHot(deck.a);
-tempoFasterB.isHot = () => midiMessageHandler.isHot(deck.b);
-tempoSlowerA.isHot = () => midiMessageHandler.isHot(deck.a);
-tempoSlowerB.isHot = () => midiMessageHandler.isHot(deck.b);
 
 input.on("message", (_, message) =>
   midiMessageHandler.handleMidiMessage(message),
