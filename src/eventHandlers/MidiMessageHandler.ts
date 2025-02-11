@@ -4,7 +4,8 @@ import { isControlChange } from "../midi/isControlChange";
 import { getMidiChannel } from "../midi/getMidiChannel";
 import streamDeck from "@elgato/streamdeck";
 import { midiChannel } from "../config";
-import { TraktorAction } from "../actions/TraktorAction";
+import { TraktorAction, HotcueTraktorAction } from "../actions";
+
 export class MidiMessageHandler {
   private state: State = {
     decks: {
@@ -31,9 +32,9 @@ export class MidiMessageHandler {
     },
   };
 
-  private actions: Record<Key, TraktorAction>;
+ private actions: Record<Key, TraktorAction | HotcueTraktorAction>;
 
-  constructor(actions: Record<Key, TraktorAction>) {
+  constructor(actions: Record<Key, TraktorAction | HotcueTraktorAction>) {
     this.actions = actions;
   }
 

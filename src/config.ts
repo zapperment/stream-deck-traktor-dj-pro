@@ -59,3 +59,12 @@ export const controller = {
   loopSetTo16: "loopSetTo16" as Controller,
   loopSetTo32: "loopSetTo32" as Controller,
 };
+
+export const hotcueState = {
+  unassigned: "unassigned" as HotcueState,
+  floating: "floating" as HotcueState,
+  cuepoint: "cuepoint" as HotcueState,
+  load: "load" as HotcueState,
+  fade: "fade" as HotcueState,
+  loop: "loop" as HotcueState,
+};

@@ -13,11 +13,10 @@ export class LoopControl16B extends ToggleTraktorAction {
       deck: deck.b,
       key: "loopControl16B",
       img: {
-        onCold: "imgs/actions/loop-control-16/loop-control-16-active-cold.svg",
-        onHot: "imgs/actions/loop-control-16/loop-control-16-active-hot.svg",
-        offCold:
-          "imgs/actions/loop-control-16/loop-control-16-inactive-cold.svg",
-        offHot: "imgs/actions/loop-control-16/loop-control-16-inactive-hot.svg",
+        onCold: "imgs/actions/loop-control-16-active-cold.svg",
+        onHot: "imgs/actions/loop-control-16-active-hot.svg",
+        offCold: "imgs/actions/loop-control-16-inactive-cold.svg",
+        offHot: "imgs/actions/loop-control-16-inactive-hot.svg",
       },
       handleKeyDown,
     });

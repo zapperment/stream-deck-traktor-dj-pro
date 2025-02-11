@@ -12,10 +12,10 @@ export class JumpBackB extends TriggerTraktorAction {
       deck: deck.b,
       key: "jumpBackB",
       img: {
-        onCold: "imgs/actions/jump-back/jump-back-pressed-cold.svg",
-        onHot: "imgs/actions/jump-back/jump-back-pressed-hot.svg",
-        offCold: "imgs/actions/jump-back/jump-back-normal-cold.svg",
-        offHot: "imgs/actions/jump-back/jump-back-normal-hot.svg",
+        onCold: "imgs/actions/jump-back-pressed-cold.svg",
+        onHot: "imgs/actions/jump-back-pressed-hot.svg",
+        offCold: "imgs/actions/jump-back-normal-cold.svg",
+        offHot: "imgs/actions/jump-back-normal-hot.svg",
       },
       handleKeyDown,
     });

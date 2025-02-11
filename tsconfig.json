@@ -7,6 +7,6 @@
     "noImplicitOverride": true,
     "types": ["vitest/globals"]
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "src/actions/Hotcue1A.ts.bak"],
   "exclude": ["node_modules"]
 }
