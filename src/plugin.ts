@@ -1,6 +1,6 @@
 import type { Input, Output } from "@julusian/midi";
 
-import streamDeck, { LogLevel, SingletonAction } from "@elgato/streamdeck";
+import streamDeck, { LogLevel } from "@elgato/streamdeck";
 
 import {
   CueA,
