@@ -68,3 +68,13 @@ export const hotcueState = {
   fade: "fade" as HotcueState,
   loop: "loop" as HotcueState,
 };
+
+export const midiControlValueToHotcueState = [
+  hotcueState.unassigned, // 0
+  hotcueState.cuepoint, // 1
+  hotcueState.fade, // 2 (fade out)
+  hotcueState.fade, // 3 (fade in)
+  hotcueState.load, // 4
+  hotcueState.floating, // 5
+  hotcueState.loop, // 6
+];

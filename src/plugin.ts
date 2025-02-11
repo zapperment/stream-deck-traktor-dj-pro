@@ -1,6 +1,6 @@
 import type { Input, Output } from "@julusian/midi";
 
-import streamDeck, { LogLevel} from "@elgato/streamdeck";
+import streamDeck, { LogLevel } from "@elgato/streamdeck";
 
 import {
   CueA,
@@ -40,7 +40,7 @@ import { initPort } from "./midi";
 import { keyDirection } from "./config";
 import { MidiMessageHandler, createKeyHandler } from "./eventHandlers";
 
-streamDeck.logger.setLevel(LogLevel.TRACE);
+streamDeck.logger.setLevel(LogLevel.INFO);
 
 //const input = initPort<Input>("Keyboard Maestro", "input");
 const input = initPort<Input>("IAC Traktor to Stream Deck", "input");

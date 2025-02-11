@@ -1,5 +1,10 @@
 import { MidiMessage } from "@julusian/midi";
-import { deck, midiControl, midiControlValueToLoopControl } from "../config";
+import {
+  deck,
+  midiControl,
+  midiControlValueToLoopControl,
+  midiControlValueToHotcueState,
+} from "../config";
 import { isControlChange } from "../midi/isControlChange";
 import { getMidiChannel } from "../midi/getMidiChannel";
 import streamDeck from "@elgato/streamdeck";
@@ -32,7 +37,7 @@ export class MidiMessageHandler {
     },
   };
 
- private actions: Record<Key, TraktorAction | HotcueTraktorAction>;
+  private actions: Record<Key, TraktorAction | HotcueTraktorAction>;
 
   constructor(actions: Record<Key, TraktorAction | HotcueTraktorAction>) {
     this.actions = actions;
@@ -68,6 +73,18 @@ export class MidiMessageHandler {
           break;
         case midiControl.setLoop:
           this.handleSetLoop(value, currentDeck);
+          break;
+        case midiControl.hotcue1:
+          this.handleHotcue(value, currentDeck, 1);
+          break;
+        case midiControl.hotcue2:
+          this.handleHotcue(value, currentDeck, 2);
+          break;
+        case midiControl.hotcue3:
+          this.handleHotcue(value, currentDeck, 3);
+          break;
+        case midiControl.hotcue4:
+          this.handleHotcue(value, currentDeck, 4);
           break;
       }
     }
@@ -109,6 +126,26 @@ export class MidiMessageHandler {
     });
 
     [
+      "hotcue1A",
+      "hotcue2A",
+      "hotcue3A",
+      "hotcue4A",
+      "hotcue1B",
+      "hotcue2B",
+      "hotcue3B",
+      "hotcue4B",
+    ].forEach((key) => {
+      const action = this.actions[key as keyof Keys] as HotcueTraktorAction;
+      if (action.hasChanged) {
+        if (deckChanged) {
+          action.isHot = this.isHot(action.deck);
+        }
+        action.updateKey();
+        action.hasChanged = false;
+      }
+    });
+
+    [
       "jumpForwardA",
       "jumpForwardB",
       "jumpBackA",
@@ -133,6 +170,17 @@ export class MidiMessageHandler {
 
   isHot(deck: Deck) {
     return this.state.decks[deck].isHot;
+  }
+
+  private handleHotcue(value: number, deck: Deck, hotcue: number) {
+    const hotcueState = midiControlValueToHotcueState[value];
+    streamDeck.logger.info(
+      `[handleHotcue] hotcue ${hotcue} on deck ${deck.toUpperCase()} set to ${hotcueState}`,
+    );
+    const key = `hotcue${hotcue}${deck.toUpperCase()}` as Key;
+    const action = this.actions[key as keyof Keys] as HotcueTraktorAction;
+    action.hotcueState = hotcueState;
+    action.hasChanged = true;
   }
 
   private handleCrossfader(value: number) {
@@ -323,6 +371,10 @@ export class MidiMessageHandler {
           "loopControl32A",
           "tempoFasterA",
           "tempoSlowerA",
+          "hotcue1A",
+          "hotcue2A",
+          "hotcue3A",
+          "hotcue4A",
         );
       }
 
@@ -339,6 +391,10 @@ export class MidiMessageHandler {
           "loopControl32B",
           "tempoFasterB",
           "tempoSlowerB",
+          "hotcue1B",
+          "hotcue2B",
+          "hotcue3B",
+          "hotcue4B",
         );
       }
     }

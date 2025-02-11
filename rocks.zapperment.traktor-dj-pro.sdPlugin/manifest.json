@@ -289,7 +289,6 @@
       "Icon": "imgs/actions/loop-control-32-inactive-cold",
       "Tooltip": "Sets loop length to 32 beats on deck B",
       "Controllers": ["Keypad"],
-
       "States": [
         {
           "Image": "imgs/actions/loop-control-32-inactive-cold",
@@ -300,12 +299,12 @@
     {
       "Name": "Hotcue 1 Deck A",
       "UUID": "rocks.zapperment.traktor-dj-pro.hotcue-1-a",
-      "Icon": "imgs/actions/hotcue-1-inactive-cold",
+      "Icon": "imgs/actions/hotcue-1-unassigned-cold",
       "Tooltip": "Sets or triggers hotcue 1 on deck A",
       "Controllers": ["Keypad"],
       "States": [
         {
-          "Image": "imgs/actions/hotcue-1-inactive-cold",
+          "Image": "imgs/actions/hotcue-1-unassigned-cold",
           "TitleAlignment": "middle"
         }
       ]
@@ -313,12 +312,12 @@
     {
       "Name": "Hotcue 1 Deck B",
       "UUID": "rocks.zapperment.traktor-dj-pro.hotcue-1-b",
-      "Icon": "imgs/actions/hotcue-1-inactive-cold",
+      "Icon": "imgs/actions/hotcue-1-unassigned-cold",
       "Tooltip": "Sets or triggers hotcue 1 on deck B",
       "Controllers": ["Keypad"],
       "States": [
         {
-          "Image": "imgs/actions/hotcue-1-inactive-cold",
+          "Image": "imgs/actions/hotcue-1-unassigned-cold",
           "TitleAlignment": "middle"
         }
       ]
@@ -326,25 +325,25 @@
     {
       "Name": "Hotcue 2 Deck A",
       "UUID": "rocks.zapperment.traktor-dj-pro.hotcue-2-a",
-      "Icon": "imgs/actions/hotcue-2-inactive-cold",
+      "Icon": "imgs/actions/hotcue-2-unassigned-cold",
       "Tooltip": "Sets or triggers hotcue 2 on deck A",
       "Controllers": ["Keypad"],
       "States": [
         {
-          "Image": "imgs/actions/hotcue-2-inactive-cold",
+          "Image": "imgs/actions/hotcue-2-unassigned-cold",
           "TitleAlignment": "middle"
         }
       ]
-    },  
+    },
     {
       "Name": "Hotcue 2 Deck B",
       "UUID": "rocks.zapperment.traktor-dj-pro.hotcue-2-b",
-      "Icon": "imgs/actions/hotcue-2-inactive-cold",
+      "Icon": "imgs/actions/hotcue-2-unassigned-cold",
       "Tooltip": "Sets or triggers hotcue 2 on deck B",
       "Controllers": ["Keypad"],
       "States": [
         {
-          "Image": "imgs/actions/hotcue-2-inactive-cold",
+          "Image": "imgs/actions/hotcue-2-unassigned-cold",
           "TitleAlignment": "middle"
         }
       ]
@@ -352,12 +351,12 @@
     {
       "Name": "Hotcue 3 Deck A",
       "UUID": "rocks.zapperment.traktor-dj-pro.hotcue-3-a",
-      "Icon": "imgs/actions/hotcue-3-inactive-cold",
+      "Icon": "imgs/actions/hotcue-3-unassigned-cold",
       "Tooltip": "Sets or triggers hotcue 3 on deck A",
       "Controllers": ["Keypad"],
       "States": [
         {
-          "Image": "imgs/actions/hotcue-3-inactive-cold",
+          "Image": "imgs/actions/hotcue-3-unassigned-cold",
           "TitleAlignment": "middle"
         }
       ]
@@ -365,12 +364,12 @@
     {
       "Name": "Hotcue 3 Deck B",
       "UUID": "rocks.zapperment.traktor-dj-pro.hotcue-3-b",
-      "Icon": "imgs/actions/hotcue-3-inactive-cold",
+      "Icon": "imgs/actions/hotcue-3-unassigned-cold",
       "Tooltip": "Sets or triggers hotcue 3 on deck B",
       "Controllers": ["Keypad"],
       "States": [
         {
-          "Image": "imgs/actions/hotcue-3-inactive-cold",
+          "Image": "imgs/actions/hotcue-3-unassigned-cold",
           "TitleAlignment": "middle"
         }
       ]
@@ -378,12 +377,12 @@
     {
       "Name": "Hotcue 4 Deck A",
       "UUID": "rocks.zapperment.traktor-dj-pro.hotcue-4-a",
-      "Icon": "imgs/actions/hotcue-4-inactive-cold",
+      "Icon": "imgs/actions/hotcue-4-unassigned-cold",
       "Tooltip": "Sets or triggers hotcue 4 on deck A",
       "Controllers": ["Keypad"],
       "States": [
         {
-          "Image": "imgs/actions/hotcue-4-inactive-cold",
+          "Image": "imgs/actions/hotcue-4-unassigned-cold",
           "TitleAlignment": "middle"
         }
       ]
@@ -391,12 +390,12 @@
     {
       "Name": "Hotcue 4 Deck B",
       "UUID": "rocks.zapperment.traktor-dj-pro.hotcue-4-b",
-      "Icon": "imgs/actions/hotcue-4-inactive-cold",
+      "Icon": "imgs/actions/hotcue-4-unassigned-cold",
       "Tooltip": "Sets or triggers hotcue 4 on deck B",
       "Controllers": ["Keypad"],
       "States": [
         {
-          "Image": "imgs/actions/hotcue-4-inactive-cold",
+          "Image": "imgs/actions/hotcue-4-unassigned-cold",
           "TitleAlignment": "middle"
         }
       ]
