@@ -231,6 +231,85 @@ export function createKeyHandler(
         );
         break;
 
+      case "hotcue1A":
+        output.send(
+          createControlChangeMessage(
+            midiChannel.sendDeckA,
+            midiControl.hotcue1,
+            value,
+          ),
+        );
+        break;
+
+      case "hotcue1B":
+        output.send(
+          createControlChangeMessage(
+            midiChannel.sendDeckB,
+            midiControl.hotcue1,
+            value,
+          ),
+        );
+        break;
+
+      case "hotcue2A":
+        output.send(
+          createControlChangeMessage(
+            midiChannel.sendDeckA,
+            midiControl.hotcue2,
+            value,
+          ),
+        );
+        break;
+
+      case "hotcue2B":
+        output.send(
+          createControlChangeMessage(
+            midiChannel.sendDeckB,
+            midiControl.hotcue2,
+            value,
+          ),
+        );
+        break;
+
+      case "hotcue3A":
+        output.send(
+          createControlChangeMessage(
+            midiChannel.sendDeckA,
+            midiControl.hotcue3,
+            value,
+          ),
+        );
+        break;
+
+      case "hotcue3B":
+        output.send(
+          createControlChangeMessage(
+            midiChannel.sendDeckB,
+            midiControl.hotcue3,
+            value,
+          ),
+        );
+        break;
+
+      case "hotcue4A":
+        output.send(
+          createControlChangeMessage(
+            midiChannel.sendDeckA,
+            midiControl.hotcue4,
+            value,
+          ),
+        );
+        break;
+
+      case "hotcue4B":
+        output.send(
+          createControlChangeMessage(
+            midiChannel.sendDeckB,
+            midiControl.hotcue4,
+            value,
+          ),
+        );
+
       default:
         streamDeck.logger.error(`[handleKey] unknown key: ${key}`);
     }

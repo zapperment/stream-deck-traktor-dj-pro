@@ -12,10 +12,10 @@ export class TempoFasterA extends TriggerTraktorAction {
       deck: deck.a,
       key: "tempoFasterA",
       img: {
-        onCold: "imgs/actions/tempo-faster/tempo-faster-pressed-cold.svg",
-        onHot: "imgs/actions/tempo-faster/tempo-faster-pressed-hot.svg",
-        offCold: "imgs/actions/tempo-faster/tempo-faster-normal-cold.svg",
-        offHot: "imgs/actions/tempo-faster/tempo-faster-normal-hot.svg",
+        onCold: "imgs/actions/tempo-faster-pressed-cold.svg",
+        onHot: "imgs/actions/tempo-faster-pressed-hot.svg",
+        offCold: "imgs/actions/tempo-faster-normal-cold.svg",
+        offHot: "imgs/actions/tempo-faster-normal-hot.svg",
       },
       handleKeyDown,
     });

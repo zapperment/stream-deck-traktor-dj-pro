@@ -13,10 +13,10 @@ export class LoopA extends ToggleTraktorAction {
       deck: deck.a,
       key: "loopA",
       img: {
-        onCold: "imgs/actions/loop/loop-active-cold.svg",
-        onHot: "imgs/actions/loop/loop-active-hot.svg",
-        offCold: "imgs/actions/loop/loop-inactive-cold.svg",
-        offHot: "imgs/actions/loop/loop-inactive-hot.svg",
+        onCold: "imgs/actions/loop-active-cold.svg",
+        onHot: "imgs/actions/loop-active-hot.svg",
+        offCold: "imgs/actions/loop-inactive-cold.svg",
+        offHot: "imgs/actions/loop-inactive-hot.svg",
       },
       handleKeyDown,
     });

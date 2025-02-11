@@ -34,6 +34,14 @@ type Controller =
   | "loopSetTo16"
   | "loopSetTo32";
 
+type HotcueState =
+  | "unassigned"
+  | "floating"
+  | "cuepoint"
+  | "load"
+  | "fade"
+  | "loop";
+
 type Keys = Record<
   Key,
   {
@@ -52,6 +60,21 @@ interface Img {
   onHot: string;
   offCold: string;
   offHot: string;
+}
+
+interface HotcueImg {
+  unassignedCold: string;
+  unassignedHot: string;
+  floatingCold: string;
+  floatingHot: string;
+  cuepointCold: string;
+  cuepointHot: string;
+  loadCold: string;
+  loadHot: string;
+  fadeCold: string;
+  fadeHot: string;
+  loopCold: string;
+  loopHot: string;
 }
 
 interface State {

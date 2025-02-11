@@ -1,18 +1,10 @@
-import streamDeck, { SingletonAction } from "@elgato/streamdeck";
+import streamDeck from "@elgato/streamdeck";
+import { BaseTraktorAction } from "./BaseTraktorAction";
 
-export class TraktorAction extends SingletonAction {
-  private readonly _controller: Controller | null;
-  private readonly _deck: Deck;
-
+export class TraktorAction extends BaseTraktorAction {
   private readonly updateKeyWhenReleased: boolean;
   private readonly updateKeyWhenPressed: boolean;
-  private readonly blockHot: boolean;
-  private readonly key: Key;
   private readonly img: Img;
-
-  hasChanged: boolean = false;
-
-  private _isHot: boolean = false;
 
   private readonly handleKeyDown: (key: Key) => void;
   private readonly handleKeyUp: ((key: Key) => void) | null;
@@ -38,28 +30,17 @@ export class TraktorAction extends SingletonAction {
     handleKeyDown: (key: Key) => void;
     handleKeyUp?: (key: Key) => void;
   }) {
-    super();
-    this._controller = controller || null;
-    this._deck = deck;
-    this.key = key;
+    super({
+      controller,
+      deck,
+      key,
+      blockHot,
+    });
     this.img = img;
     this.updateKeyWhenReleased = updateKeyWhenReleased || false;
     this.updateKeyWhenPressed = updateKeyWhenPressed || false;
-    this.blockHot = blockHot || false;
     this.handleKeyDown = handleKeyDown;
     this.handleKeyUp = handleKeyUp || null;
-  }
-
-  set isHot(value: boolean) {
-    this._isHot = value;
-  }
-
-  get controller(): Controller | null {
-    return this._controller;
-  }
-
-  get deck(): Deck {
-    return this._deck;
   }
 
   override async onKeyDown(): Promise<void> {

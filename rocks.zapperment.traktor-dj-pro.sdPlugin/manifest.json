@@ -6,12 +6,12 @@
     {
       "Name": "Play Deck A",
       "UUID": "rocks.zapperment.traktor-dj-pro.play-a",
-      "Icon": "imgs/actions/play/play-stopped-cold",
+      "Icon": "imgs/actions/play-stopped-cold",
       "Tooltip": "Starts/stops playing deck A",
       "Controllers": ["Keypad"],
       "States": [
         {
-          "Image": "imgs/actions/play/play-stopped-cold",
+          "Image": "imgs/actions/play-stopped-cold",
           "TitleAlignment": "middle"
         }
       ]
@@ -19,12 +19,12 @@
     {
       "Name": "Play Deck B",
       "UUID": "rocks.zapperment.traktor-dj-pro.play-b",
-      "Icon": "imgs/actions/play/play-stopped-cold",
+      "Icon": "imgs/actions/play-stopped-cold",
       "Tooltip": "Starts/stops playing deck B",
       "Controllers": ["Keypad"],
       "States": [
         {
-          "Image": "imgs/actions/play/play-stopped-cold",
+          "Image": "imgs/actions/play-stopped-cold",
           "TitleAlignment": "middle"
         }
       ]
@@ -32,12 +32,12 @@
     {
       "Name": "Cue Deck A",
       "UUID": "rocks.zapperment.traktor-dj-pro.cue-a",
-      "Icon": "imgs/actions/cue/cue-normal-cold",
+      "Icon": "imgs/actions/cue-normal-cold",
       "Tooltip": "Cues deck A",
       "Controllers": ["Keypad"],
       "States": [
         {
-          "Image": "imgs/actions/cue/cue-normal-cold",
+          "Image": "imgs/actions/cue-normal-cold",
           "TitleAlignment": "middle"
         }
       ]
@@ -45,12 +45,12 @@
     {
       "Name": "Cue Deck B",
       "UUID": "rocks.zapperment.traktor-dj-pro.cue-b",
-      "Icon": "imgs/actions/cue/cue-normal-cold",
+      "Icon": "imgs/actions/cue-normal-cold",
       "Tooltip": "Cues deck B",
       "Controllers": ["Keypad"],
       "States": [
         {
-          "Image": "imgs/actions/cue/cue-normal-cold",
+          "Image": "imgs/actions/cue-normal-cold",
           "TitleAlignment": "middle"
         }
       ]
@@ -58,12 +58,12 @@
     {
       "Name": "Jump Forward Deck A",
       "UUID": "rocks.zapperment.traktor-dj-pro.jump-forward-a",
-      "Icon": "imgs/actions/jump-forward/jump-forward-normal-cold",
+      "Icon": "imgs/actions/jump-forward-normal-cold",
       "Tooltip": "Jumps forward on deck A",
       "Controllers": ["Keypad"],
       "States": [
         {
-          "Image": "imgs/actions/jump-forward/jump-forward-normal-cold",
+          "Image": "imgs/actions/jump-forward-normal-cold",
           "TitleAlignment": "middle"
         }
       ]
@@ -71,12 +71,12 @@
     {
       "Name": "Jump Forward Deck B",
       "UUID": "rocks.zapperment.traktor-dj-pro.jump-forward-b",
-      "Icon": "imgs/actions/jump-forward/jump-forward-normal-cold",
+      "Icon": "imgs/actions/jump-forward-normal-cold",
       "Tooltip": "Jumps forward on deck B",
       "Controllers": ["Keypad"],
       "States": [
         {
-          "Image": "imgs/actions/jump-forward/jump-forward-normal-cold",
+          "Image": "imgs/actions/jump-forward-normal-cold",
           "TitleAlignment": "middle"
         }
       ]
@@ -84,12 +84,12 @@
     {
       "Name": "Jump Back Deck A",
       "UUID": "rocks.zapperment.traktor-dj-pro.jump-back-a",
-      "Icon": "imgs/actions/jump-back/jump-back-normal-cold",
+      "Icon": "imgs/actions/jump-back-normal-cold",
       "Tooltip": "Jumps back on deck A",
       "Controllers": ["Keypad"],
       "States": [
         {
-          "Image": "imgs/actions/jump-back/jump-back-normal-cold",
+          "Image": "imgs/actions/jump-back-normal-cold",
           "TitleAlignment": "middle"
         }
       ]
@@ -97,12 +97,12 @@
     {
       "Name": "Jump Back Deck B",
       "UUID": "rocks.zapperment.traktor-dj-pro.jump-back-b",
-      "Icon": "imgs/actions/jump-back/jump-back-normal-cold",
+      "Icon": "imgs/actions/jump-back-normal-cold",
       "Tooltip": "Jumps back on deck B",
       "Controllers": ["Keypad"],
       "States": [
         {
-          "Image": "imgs/actions/jump-back/jump-back-normal-cold",
+          "Image": "imgs/actions/jump-back-normal-cold",
           "TitleAlignment": "middle"
         }
       ]
@@ -110,12 +110,12 @@
     {
       "Name": "Load Deck A",
       "UUID": "rocks.zapperment.traktor-dj-pro.load-a",
-      "Icon": "imgs/actions/load/load-normal-cold",
+      "Icon": "imgs/actions/load-normal-cold",
       "Tooltip": "Loads selected track todeck A",
       "Controllers": ["Keypad"],
       "States": [
         {
-          "Image": "imgs/actions/load/load-normal-cold",
+          "Image": "imgs/actions/load-normal-cold",
           "TitleAlignment": "middle"
         }
       ]
@@ -123,12 +123,12 @@
     {
       "Name": "Load Deck B",
       "UUID": "rocks.zapperment.traktor-dj-pro.load-b",
-      "Icon": "imgs/actions/load/load-normal-cold",
+      "Icon": "imgs/actions/load-normal-cold",
       "Tooltip": "Loads selected track to deck B",
       "Controllers": ["Keypad"],
       "States": [
         {
-          "Image": "imgs/actions/load/load-normal-cold",
+          "Image": "imgs/actions/load-normal-cold",
           "TitleAlignment": "middle"
         }
       ]
@@ -136,12 +136,12 @@
     {
       "Name": "Tempo Faster Deck A",
       "UUID": "rocks.zapperment.traktor-dj-pro.tempo-faster-a",
-      "Icon": "imgs/actions/tempo-faster/tempo-faster-normal-cold",
+      "Icon": "imgs/actions/tempo-faster-normal-cold",
       "Tooltip": "Makes tempo of deck A faster",
       "Controllers": ["Keypad"],
       "States": [
         {
-          "Image": "imgs/actions/tempo-faster/tempo-faster-normal-cold",
+          "Image": "imgs/actions/tempo-faster-normal-cold",
           "TitleAlignment": "middle"
         }
       ]
@@ -149,12 +149,12 @@
     {
       "Name": "Tempo Faster Deck B",
       "UUID": "rocks.zapperment.traktor-dj-pro.tempo-faster-b",
-      "Icon": "imgs/actions/tempo-faster/tempo-faster-normal-cold",
+      "Icon": "imgs/actions/tempo-faster-normal-cold",
       "Tooltip": "Makes tempo of deck B faster",
       "Controllers": ["Keypad"],
       "States": [
         {
-          "Image": "imgs/actions/tempo-faster/tempo-faster-normal-cold",
+          "Image": "imgs/actions/tempo-faster-normal-cold",
           "TitleAlignment": "middle"
         }
       ]
@@ -162,12 +162,12 @@
     {
       "Name": "Tempo Slower Deck A",
       "UUID": "rocks.zapperment.traktor-dj-pro.tempo-slower-a",
-      "Icon": "imgs/actions/tempo-slower/tempo-slower-normal-cold",
+      "Icon": "imgs/actions/tempo-slower-normal-cold",
       "Tooltip": "Makes tempo of deck A slower",
       "Controllers": ["Keypad"],
       "States": [
         {
-          "Image": "imgs/actions/tempo-slower/tempo-slower-normal-cold",
+          "Image": "imgs/actions/tempo-slower-normal-cold",
           "TitleAlignment": "middle"
         }
       ]
@@ -175,12 +175,12 @@
     {
       "Name": "Tempo Slower Deck B",
       "UUID": "rocks.zapperment.traktor-dj-pro.tempo-slower-b",
-      "Icon": "imgs/actions/tempo-slower/tempo-slower-normal-cold",
+      "Icon": "imgs/actions/tempo-slower-normal-cold",
       "Tooltip": "Makes tempo of deck B slower",
       "Controllers": ["Keypad"],
       "States": [
         {
-          "Image": "imgs/actions/tempo-slower/tempo-slower-normal-cold",
+          "Image": "imgs/actions/tempo-slower-normal-cold",
           "TitleAlignment": "middle"
         }
       ]
@@ -188,13 +188,13 @@
     {
       "Name": "Loop Deck A",
       "UUID": "rocks.zapperment.traktor-dj-pro.loop-a",
-      "Icon": "imgs/actions/loop/loop-inactive-cold",
+      "Icon": "imgs/actions/loop-inactive-cold",
       "Tooltip": "Turns loop on/off on deck A",
       "Controllers": ["Keypad"],
 
       "States": [
         {
-          "Image": "imgs/actions/loop/loop-inactive-cold",
+          "Image": "imgs/actions/loop-inactive-cold",
           "TitleAlignment": "middle"
         }
       ]
@@ -202,13 +202,13 @@
     {
       "Name": "Loop Deck B",
       "UUID": "rocks.zapperment.traktor-dj-pro.loop-b",
-      "Icon": "imgs/actions/loop/loop-inactive-cold",
+      "Icon": "imgs/actions/loop-inactive-cold",
       "Tooltip": "Turns loop on/off on deck B",
       "Controllers": ["Keypad"],
 
       "States": [
         {
-          "Image": "imgs/actions/loop/loop-inactive-cold",
+          "Image": "imgs/actions/loop-inactive-cold",
           "TitleAlignment": "middle"
         }
       ]
@@ -216,13 +216,13 @@
     {
       "Name": "Loop Control 8 Deck A",
       "UUID": "rocks.zapperment.traktor-dj-pro.loop-control-8-a",
-      "Icon": "imgs/actions/loop-control-8/loop-control-8-inactive-cold",
+      "Icon": "imgs/actions/loop-control-8-inactive-cold",
       "Tooltip": "Sets loop length to 8 beats on deck A",
       "Controllers": ["Keypad"],
 
       "States": [
         {
-          "Image": "imgs/actions/loop-control-8/loop-control-8-inactive-cold",
+          "Image": "imgs/actions/loop-control-8-inactive-cold",
           "TitleAlignment": "middle"
         }
       ]
@@ -230,13 +230,13 @@
     {
       "Name": "Loop Control 8 Deck B",
       "UUID": "rocks.zapperment.traktor-dj-pro.loop-control-8-b",
-      "Icon": "imgs/actions/loop-control-8/loop-control-8-inactive-cold",
+      "Icon": "imgs/actions/loop-control-8-inactive-cold",
       "Tooltip": "Sets loop length to 8 beats on deck B",
       "Controllers": ["Keypad"],
 
       "States": [
         {
-          "Image": "imgs/actions/loop-control-8/loop-control-8-inactive-cold",
+          "Image": "imgs/actions/loop-control-8-inactive-cold",
           "TitleAlignment": "middle"
         }
       ]
@@ -244,13 +244,13 @@
     {
       "Name": "Loop Control 16 Deck A",
       "UUID": "rocks.zapperment.traktor-dj-pro.loop-control-16-a",
-      "Icon": "imgs/actions/loop-control-16/loop-control-16-inactive-cold",
+      "Icon": "imgs/actions/loop-control-16-inactive-cold",
       "Tooltip": "Sets loop length to 16 beats on deck A",
       "Controllers": ["Keypad"],
 
       "States": [
         {
-          "Image": "imgs/actions/loop-control-16/loop-control-16-inactive-cold",
+          "Image": "imgs/actions/loop-control-16-inactive-cold",
           "TitleAlignment": "middle"
         }
       ]
@@ -258,13 +258,13 @@
     {
       "Name": "Loop Control 16 Deck B",
       "UUID": "rocks.zapperment.traktor-dj-pro.loop-control-16-b",
-      "Icon": "imgs/actions/loop-control-16/loop-control-16-inactive-cold",
+      "Icon": "imgs/actions/loop-control-16-inactive-cold",
       "Tooltip": "Sets loop length to 16 beats on deck B",
       "Controllers": ["Keypad"],
 
       "States": [
         {
-          "Image": "imgs/actions/loop-control-16/loop-control-16-inactive-cold",
+          "Image": "imgs/actions/loop-control-16-inactive-cold",
           "TitleAlignment": "middle"
         }
       ]
@@ -272,13 +272,13 @@
     {
       "Name": "Loop Control 32 Deck A",
       "UUID": "rocks.zapperment.traktor-dj-pro.loop-control-32-a",
-      "Icon": "imgs/actions/loop-control-32/loop-control-32-inactive-cold",
+      "Icon": "imgs/actions/loop-control-32-inactive-cold",
       "Tooltip": "Sets loop length to 32 beats on deck A",
       "Controllers": ["Keypad"],
 
       "States": [
         {
-          "Image": "imgs/actions/loop-control-32/loop-control-32-inactive-cold",
+          "Image": "imgs/actions/loop-control-32-inactive-cold",
           "TitleAlignment": "middle"
         }
       ]
@@ -286,18 +286,122 @@
     {
       "Name": "Loop Control 32 Deck B",
       "UUID": "rocks.zapperment.traktor-dj-pro.loop-control-32-b",
-      "Icon": "imgs/actions/loop-control-32/loop-control-32-inactive-cold",
+      "Icon": "imgs/actions/loop-control-32-inactive-cold",
       "Tooltip": "Sets loop length to 32 beats on deck B",
       "Controllers": ["Keypad"],
-
       "States": [
         {
-          "Image": "imgs/actions/loop-control-32/loop-control-32-inactive-cold",
+          "Image": "imgs/actions/loop-control-32-inactive-cold",
+          "TitleAlignment": "middle"
+        }
+      ]
+    },
+    {
+      "Name": "Hotcue 1 Deck A",
+      "UUID": "rocks.zapperment.traktor-dj-pro.hotcue-1-a",
+      "Icon": "imgs/actions/hotcue-1-unassigned-cold",
+      "Tooltip": "Sets or triggers hotcue 1 on deck A",
+      "Controllers": ["Keypad"],
+      "States": [
+        {
+          "Image": "imgs/actions/hotcue-1-unassigned-cold",
+          "TitleAlignment": "middle"
+        }
+      ]
+    },
+    {
+      "Name": "Hotcue 1 Deck B",
+      "UUID": "rocks.zapperment.traktor-dj-pro.hotcue-1-b",
+      "Icon": "imgs/actions/hotcue-1-unassigned-cold",
+      "Tooltip": "Sets or triggers hotcue 1 on deck B",
+      "Controllers": ["Keypad"],
+      "States": [
+        {
+          "Image": "imgs/actions/hotcue-1-unassigned-cold",
+          "TitleAlignment": "middle"
+        }
+      ]
+    },
+    {
+      "Name": "Hotcue 2 Deck A",
+      "UUID": "rocks.zapperment.traktor-dj-pro.hotcue-2-a",
+      "Icon": "imgs/actions/hotcue-2-unassigned-cold",
+      "Tooltip": "Sets or triggers hotcue 2 on deck A",
+      "Controllers": ["Keypad"],
+      "States": [
+        {
+          "Image": "imgs/actions/hotcue-2-unassigned-cold",
+          "TitleAlignment": "middle"
+        }
+      ]
+    },
+    {
+      "Name": "Hotcue 2 Deck B",
+      "UUID": "rocks.zapperment.traktor-dj-pro.hotcue-2-b",
+      "Icon": "imgs/actions/hotcue-2-unassigned-cold",
+      "Tooltip": "Sets or triggers hotcue 2 on deck B",
+      "Controllers": ["Keypad"],
+      "States": [
+        {
+          "Image": "imgs/actions/hotcue-2-unassigned-cold",
+          "TitleAlignment": "middle"
+        }
+      ]
+    },
+    {
+      "Name": "Hotcue 3 Deck A",
+      "UUID": "rocks.zapperment.traktor-dj-pro.hotcue-3-a",
+      "Icon": "imgs/actions/hotcue-3-unassigned-cold",
+      "Tooltip": "Sets or triggers hotcue 3 on deck A",
+      "Controllers": ["Keypad"],
+      "States": [
+        {
+          "Image": "imgs/actions/hotcue-3-unassigned-cold",
+          "TitleAlignment": "middle"
+        }
+      ]
+    },
+    {
+      "Name": "Hotcue 3 Deck B",
+      "UUID": "rocks.zapperment.traktor-dj-pro.hotcue-3-b",
+      "Icon": "imgs/actions/hotcue-3-unassigned-cold",
+      "Tooltip": "Sets or triggers hotcue 3 on deck B",
+      "Controllers": ["Keypad"],
+      "States": [
+        {
+          "Image": "imgs/actions/hotcue-3-unassigned-cold",
+          "TitleAlignment": "middle"
+        }
+      ]
+    },
+    {
+      "Name": "Hotcue 4 Deck A",
+      "UUID": "rocks.zapperment.traktor-dj-pro.hotcue-4-a",
+      "Icon": "imgs/actions/hotcue-4-unassigned-cold",
+      "Tooltip": "Sets or triggers hotcue 4 on deck A",
+      "Controllers": ["Keypad"],
+      "States": [
+        {
+          "Image": "imgs/actions/hotcue-4-unassigned-cold",
+          "TitleAlignment": "middle"
+        }
+      ]
+    },
+    {
+      "Name": "Hotcue 4 Deck B",
+      "UUID": "rocks.zapperment.traktor-dj-pro.hotcue-4-b",
+      "Icon": "imgs/actions/hotcue-4-unassigned-cold",
+      "Tooltip": "Sets or triggers hotcue 4 on deck B",
+      "Controllers": ["Keypad"],
+      "States": [
+        {
+          "Image": "imgs/actions/hotcue-4-unassigned-cold",
           "TitleAlignment": "middle"
         }
       ]
     }
   ],
+
   "Category": "Traktor DJ Pro",
   "CategoryIcon": "imgs/plugin/category-icon",
   "CodePath": "bin/plugin.js",
