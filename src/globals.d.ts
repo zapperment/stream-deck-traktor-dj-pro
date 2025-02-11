@@ -1,10 +1,20 @@
 type MidiMessageType = "note-on" | "note-off" | "cc" | "at" | "pb" | "pgm";
+
 type Deck = "a" | "b";
+
 type Key =
   | "playA"
   | "playB"
   | "cueA"
   | "cueB"
+  | "hotcue1A"
+  | "hotcue1B"
+  | "hotcue2A"
+  | "hotcue2B"
+  | "hotcue3A"
+  | "hotcue3B"
+  | "hotcue4A"
+  | "hotcue4B"
   | "jumpForwardA"
   | "jumpForwardB"
   | "jumpBackA"

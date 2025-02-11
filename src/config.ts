@@ -19,6 +19,10 @@ export const midiControl = {
   load: 9,
   jumpForward: 10,
   jumpBack: 11,
+  hotcue1: 12,
+  hotcue2: 13,
+  hotcue3: 14,
+  hotcue4: 15,
   setLoop: 16,
   crossfader: 0,
 };
