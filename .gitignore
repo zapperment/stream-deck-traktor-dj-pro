@@ -7,3 +7,6 @@ node_modules/
 
 # VS Code
 *.code-workspace
+
+# macOS
+.DS_Store
