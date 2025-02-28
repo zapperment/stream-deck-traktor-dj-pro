@@ -1,7 +1,8 @@
 {
+  "name": "stream-deck-traktor-pro",
   "scripts": {
     "build": "rollup -c",
-    "watch": "rollup -c -w --watch.onEnd=\"streamdeck restart rocks.zapperment.traktor-dj-pro\"",
+    "watch": "rollup -c -w --watch.onEnd=\"streamdeck restart rocks.zapperment.traktor-pro\"",
     "test": "vitest"
   },
   "type": "module",
