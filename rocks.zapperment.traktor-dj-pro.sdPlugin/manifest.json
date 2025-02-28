@@ -191,7 +191,6 @@
       "Icon": "imgs/actions/loop-inactive-cold",
       "Tooltip": "Turns loop on/off on deck A",
       "Controllers": ["Keypad"],
-
       "States": [
         {
           "Image": "imgs/actions/loop-inactive-cold",
@@ -205,7 +204,6 @@
       "Icon": "imgs/actions/loop-inactive-cold",
       "Tooltip": "Turns loop on/off on deck B",
       "Controllers": ["Keypad"],
-
       "States": [
         {
           "Image": "imgs/actions/loop-inactive-cold",
@@ -219,7 +217,6 @@
       "Icon": "imgs/actions/loop-control-8-inactive-cold",
       "Tooltip": "Sets loop length to 8 beats on deck A",
       "Controllers": ["Keypad"],
-
       "States": [
         {
           "Image": "imgs/actions/loop-control-8-inactive-cold",
@@ -233,7 +230,6 @@
       "Icon": "imgs/actions/loop-control-8-inactive-cold",
       "Tooltip": "Sets loop length to 8 beats on deck B",
       "Controllers": ["Keypad"],
-
       "States": [
         {
           "Image": "imgs/actions/loop-control-8-inactive-cold",
@@ -247,7 +243,6 @@
       "Icon": "imgs/actions/loop-control-16-inactive-cold",
       "Tooltip": "Sets loop length to 16 beats on deck A",
       "Controllers": ["Keypad"],
-
       "States": [
         {
           "Image": "imgs/actions/loop-control-16-inactive-cold",
@@ -261,7 +256,6 @@
       "Icon": "imgs/actions/loop-control-16-inactive-cold",
       "Tooltip": "Sets loop length to 16 beats on deck B",
       "Controllers": ["Keypad"],
-
       "States": [
         {
           "Image": "imgs/actions/loop-control-16-inactive-cold",
@@ -275,7 +269,6 @@
       "Icon": "imgs/actions/loop-control-32-inactive-cold",
       "Tooltip": "Sets loop length to 32 beats on deck A",
       "Controllers": ["Keypad"],
-
       "States": [
         {
           "Image": "imgs/actions/loop-control-32-inactive-cold",
@@ -401,7 +394,6 @@
       ]
     }
   ],
-
   "Category": "Traktor DJ Pro",
   "CategoryIcon": "imgs/plugin/category-icon",
   "CodePath": "bin/plugin.js",
@@ -415,10 +407,6 @@
     {
       "Platform": "mac",
       "MinimumVersion": "12"
-    },
-    {
-      "Platform": "windows",
-      "MinimumVersion": "10"
     }
   ],
   "Nodejs": {
