@@ -64,7 +64,7 @@ npm install
 On the command line, navigate to the root directory of this project and run:
 
 ```bash
-ln -s ./stream-deck-traktor-pro.sdPlugin ~/Library/Application\ Support/StreamDeck/Plugins/
+ln -s ./stream-deck-traktor-pro.sdPlugin ~/Library/Application\ Support/com.elgato.StreamDeck/Plugins/
 ```
 
 ### Run the plugin
