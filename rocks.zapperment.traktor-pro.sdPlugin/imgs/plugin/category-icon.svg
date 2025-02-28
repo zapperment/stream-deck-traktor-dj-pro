@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Plugin" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="Traktor_Logo" data-name="Traktor Logo">
+    <polygon class="cls-1" points="50.79 33.9 30.6 33.9 21.2 33.9 1 33.9 1 41.97 21.2 41.97 21.2 66.1 30.6 66.1 30.6 41.97 50.79 41.97 50.79 33.9"/>
+    <path class="cls-1" d="M63.43,52.19h26.42c5.05,0,9.15-4.09,9.15-9.15s-4.09-9.15-9.15-9.15h-35.57v32.2h9.15v-6.1l35.57,7.18v-8l-37.54-6.99h1.97ZM63.43,41.3h23.64c1.25,0,2.27,1.02,2.27,2.27s-1.02,2.27-2.27,2.27h-23.64v-4.54Z"/>
+  </g>
+</svg>

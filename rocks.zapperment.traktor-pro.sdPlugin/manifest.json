@@ -2,6 +2,7 @@
 	"Name": "Traktor Pro",
 	"Version": "0.1.0.0",
 	"Author": "Patrick Hund",
+	"URL": "https://github.com/zapperment/stream-deck-traktor-pro",
 	"Actions": [
 		{
 			"Name": "Play Deck A",
@@ -457,7 +458,7 @@
 	"Category": "Traktor Pro",
 	"CategoryIcon": "imgs/plugin/category-icon",
 	"CodePath": "bin/plugin.js",
-	"Description": "Control Traktor Pro with your Stream Deck",
+	"Description": "Control the DJ software Traktor Pro from Native Instruments with your Stream Deck. Additional setup required, visit the documentation page on GitHub for setup instructions!",
 	"Icon": "imgs/plugin/marketplace",
 	"SDKVersion": 2,
 	"Software": {
