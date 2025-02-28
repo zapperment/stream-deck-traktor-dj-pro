@@ -22,6 +22,7 @@ const config = {
       ).href;
     },
   },
+  external: ["@julusian/midi"],
   plugins: [
     {
       name: "watch-externals",
@@ -36,12 +37,8 @@ const config = {
       browser: false,
       exportConditions: ["node"],
       preferBuiltins: true,
-      modulesOnly: true,
-      resolveOnly: [/@julusian\/midi/],
     }),
-    commonjs({
-      include: /node_modules\/@julusian\/midi/,
-    }),
+    commonjs(),
     !isWatching && terser(),
     {
       name: "emit-module-package-file",
