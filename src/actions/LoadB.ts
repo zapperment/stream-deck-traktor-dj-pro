@@ -5,7 +5,7 @@ import { deck } from "../config";
 /**
  * Load deck B
  */
-@action({ UUID: "rocks.zapperment.traktor-dj-pro.load-b" })
+@action({ UUID: "rocks.zapperment.traktor-pro.load-b" })
 export class LoadB extends TriggerTraktorAction {
   constructor(handleKeyDown: (key: Key) => void) {
     super({

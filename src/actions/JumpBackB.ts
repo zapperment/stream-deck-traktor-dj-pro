@@ -5,7 +5,7 @@ import { deck } from "../config";
 /**
  * Jump back deck B
  */
-@action({ UUID: "rocks.zapperment.traktor-dj-pro.jump-back-b" })
+@action({ UUID: "rocks.zapperment.traktor-pro.jump-back-b" })
 export class JumpBackB extends TriggerTraktorAction {
   constructor(handleKeyDown: (key: Key) => void) {
     super({

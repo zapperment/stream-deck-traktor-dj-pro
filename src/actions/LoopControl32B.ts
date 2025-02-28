@@ -5,7 +5,7 @@ import { controller, deck } from "../config";
 /**
  * Loop control 32 deck B
  */
-@action({ UUID: "rocks.zapperment.traktor-dj-pro.loop-control-32-b" })
+@action({ UUID: "rocks.zapperment.traktor-pro.loop-control-32-b" })
 export class LoopControl32B extends ToggleTraktorAction {
   constructor(handleKeyDown: (key: Key) => void) {
     super({

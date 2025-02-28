@@ -5,7 +5,7 @@ import { controller, deck } from "../config";
 /**
  * Cue deck B
  */
-@action({ UUID: "rocks.zapperment.traktor-dj-pro.cue-b" })
+@action({ UUID: "rocks.zapperment.traktor-pro.cue-b" })
 export class CueB extends GateTraktorAction {
   constructor(
     handleKeyDown: (key: Key) => void,

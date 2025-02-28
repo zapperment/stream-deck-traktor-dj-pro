@@ -5,7 +5,7 @@ import { deck } from "../config";
 /**
  * Hotcue 3 on deck A
  */
-@action({ UUID: "rocks.zapperment.traktor-dj-pro.hotcue-3-a" })
+@action({ UUID: "rocks.zapperment.traktor-pro.hotcue-3-a" })
 export class Hotcue3A extends HotcueTraktorAction {
   constructor(
     handleKeyDown: (key: Key) => void,

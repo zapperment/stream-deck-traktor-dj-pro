@@ -6,7 +6,7 @@ import path from "node:path";
 import url from "node:url";
 
 const isWatching = !!process.env.ROLLUP_WATCH;
-const sdPlugin = "rocks.zapperment.traktor-dj-pro.sdPlugin";
+const sdPlugin = "rocks.zapperment.traktor-pro.sdPlugin";
 
 /**
  * @type {import('rollup').RollupOptions}

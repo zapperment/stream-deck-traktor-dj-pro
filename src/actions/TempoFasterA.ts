@@ -5,7 +5,7 @@ import { deck } from "../config";
 /**
  * Tempo faster deck A
  */
-@action({ UUID: "rocks.zapperment.traktor-dj-pro.tempo-faster-a" })
+@action({ UUID: "rocks.zapperment.traktor-pro.tempo-faster-a" })
 export class TempoFasterA extends TriggerTraktorAction {
   constructor(handleKeyDown: (key: Key) => void) {
     super({

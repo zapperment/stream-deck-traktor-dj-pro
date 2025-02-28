@@ -5,7 +5,7 @@ import { controller, deck } from "../config";
 /**
  * Play deck B
  */
-@action({ UUID: "rocks.zapperment.traktor-dj-pro.play-b" })
+@action({ UUID: "rocks.zapperment.traktor-pro.play-b" })
 export class PlayB extends ToggleTraktorAction {
   constructor(handleKeyDown: (key: Key) => void) {
     super({
